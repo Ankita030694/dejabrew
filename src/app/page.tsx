@@ -57,7 +57,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="relative z-10 h-[calc(100vh-100px)] flex items-center justify-center">
+      <main className="relative z-10 h-[calc(100vh-130px)] flex items-center justify-center">
         <div className="z-10 text-center">
           <p className="text-3xl italic mb-6 font-sans">F&B Restaurant</p>
           <h2 className="text-8xl font-serif mb-6">Artisanal Coffee.</h2>
