@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { app } from '@/firebase/firebase';
 
 interface BookingFormProps {
   onClose: () => void;
@@ -11,11 +13,7 @@ export default function BookingForm({ onClose }: BookingFormProps) {
     name: '',
     email: '',
     phone: '',
-    date: '',
-    time: '',
-    guests: '2',
-    occasion: 'casual',
-    specialRequests: ''
+    message: ''
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,7 +34,7 @@ export default function BookingForm({ onClose }: BookingFormProps) {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.name || !formData.email || !formData.phone || !formData.date || !formData.time) {
+    if (!formData.name || !formData.email || !formData.phone) {
       setFormStatus('error');
       setErrorMessage('Please fill in all required fields');
       return;
@@ -54,15 +52,14 @@ export default function BookingForm({ onClose }: BookingFormProps) {
     setFormStatus(null);
     
     try {
-      // In a real app, you would send this data to your API
-      // await fetch('/api/book-table', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
+      // Get Firestore instance
+      const db = getFirestore(app);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Save form data to "form" collection in Firestore
+      await addDoc(collection(db, "form"), {
+        ...formData,
+        createdAt: new Date()
+      });
       
       setFormStatus('success');
       
@@ -102,7 +99,7 @@ export default function BookingForm({ onClose }: BookingFormProps) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl font-serif text-white">Book Your Table</h2>
+          <h2 className="text-4xl font-serif text-white">Contact Us</h2>
           <button 
             onClick={onClose}
             className="text-white/60 hover:text-white text-2xl"
@@ -152,97 +149,30 @@ export default function BookingForm({ onClose }: BookingFormProps) {
             </div>
           </div>
 
-          {/* Phone and Date Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-white/80 mb-2 font-sans">Phone*</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#C8A27A] transition"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div>
-              <label className="block text-white/80 mb-2 font-sans">Date*</label>
-              <input
-                type="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-                min={today}
-                className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#C8A27A] transition"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-          </div>
-
-          {/* Time and Guests Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-white/80 mb-2 font-sans">Time*</label>
-              <input
-                type="time"
-                name="time"
-                value={formData.time}
-                onChange={handleChange}
-                className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#C8A27A] transition"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div>
-              <label className="block text-white/80 mb-2 font-sans">Number of Guests*</label>
-              <select
-                name="guests"
-                value={formData.guests}
-                onChange={handleChange}
-                className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#C8A27A] transition"
-                required
-                disabled={isSubmitting}
-              >
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                  <option key={num} value={num} className="bg-[#1A0F00]">
-                    {num} {num === 1 ? 'Guest' : 'Guests'}
-                  </option>
-                ))}
-                <option value="9+" className="bg-[#1A0F00]">9+ Guests (Large Party)</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Occasion */}
+          {/* Phone */}
           <div>
-            <label className="block text-white/80 mb-2 font-sans">Occasion</label>
-            <select
-              name="occasion"
-              value={formData.occasion}
+            <label className="block text-white/80 mb-2 font-sans">Phone*</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
               onChange={handleChange}
               className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#C8A27A] transition"
+              required
               disabled={isSubmitting}
-            >
-              <option value="casual" className="bg-[#1A0F00]">Casual Dining</option>
-              <option value="birthday" className="bg-[#1A0F00]">Birthday</option>
-              <option value="anniversary" className="bg-[#1A0F00]">Anniversary</option>
-              <option value="business" className="bg-[#1A0F00]">Business Meeting</option>
-              <option value="special" className="bg-[#1A0F00]">Special Occasion</option>
-            </select>
+            />
           </div>
 
-          {/* Special Requests */}
+          {/* Message */}
           <div>
-            <label className="block text-white/80 mb-2 font-sans">Special Requests</label>
+            <label className="block text-white/80 mb-2 font-sans">Message</label>
             <textarea
-              name="specialRequests"
-              value={formData.specialRequests}
+              name="message"
+              value={formData.message}
               onChange={handleChange}
               rows={4}
               className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#C8A27A] transition"
-              placeholder="Any special requests or dietary requirements?"
+              placeholder="How can we help you?"
               disabled={isSubmitting}
             />
           </div>
@@ -262,7 +192,7 @@ export default function BookingForm({ onClose }: BookingFormProps) {
                   </svg>
                   Processing...
                 </span>
-              ) : 'Confirm Booking'}
+              ) : 'Submit'}
             </button>
             <button
               type="button"

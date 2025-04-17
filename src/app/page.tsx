@@ -21,8 +21,20 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen bg-black text-white ${playfair.variable} ${montserrat.variable}`}>
+      {/* Background Image Container */}
+      <div className="absolute top-0 left-0 w-full h-screen z-0">
+        <Image
+          src="/hero.jpg"
+          alt="Restaurant background"
+          fill
+          priority
+          className="object-cover object-center object-[center_25%] brightness-50"
+          sizes="100vw"
+        />
+      </div>
+
       {/* Navigation */}
-      <nav className="flex justify-between items-center p-8">
+      <nav className="relative z-10 flex justify-between items-center p-8">
         <h1 className="text-4xl font-bold font-sans">DEJA BREW</h1>
         
         {/* Centered navigation with rounded border */}
@@ -45,16 +57,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="relative h-[calc(100vh-100px)] flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/restaurant-bg.jpg" // You'll need to add this image
-            alt="Restaurant background"
-            fill
-            className="object-cover opacity-50"
-          />
-        </div>
-        
+      <main className="relative z-10 h-[calc(100vh-100px)] flex items-center justify-center">
         <div className="z-10 text-center">
           <p className="text-3xl italic mb-6 font-sans">F&B Restaurant</p>
           <h2 className="text-8xl font-serif mb-6">Artisanal Coffee.</h2>
@@ -103,7 +106,7 @@ export default function Home() {
           {/* Right Image */}
           <div className="relative h-[700px] rounded-2xl overflow-hidden">
             <Image
-              src="/cocktails.jpg" // Add this image to your public folder
+              src="/drinks.jpg" // Add this image to your public folder
               alt="Cocktail glasses"
               fill
               className="object-cover"
@@ -122,7 +125,7 @@ export default function Home() {
           {/* First Image - Food */}
           <div className="relative h-[500px] rounded-2xl overflow-hidden">
             <Image
-              src="/food-plate.jpg" // Add elegant food plate image
+              src="/1.jpg" // Add elegant food plate image
               alt="Elegant plated dish with flowers"
               fill
               className="object-cover hover:scale-105 transition duration-500"
@@ -132,7 +135,7 @@ export default function Home() {
           {/* Second Image - Beer and Snacks */}
           <div className="relative h-[500px] rounded-2xl overflow-hidden">
             <Image
-              src="/beer-snacks.jpg" // Add beer and snacks image
+              src="/3.jpg" // Add beer and snacks image
               alt="Beer mugs with fried snacks"
               fill
               className="object-cover hover:scale-105 transition duration-500"
@@ -142,7 +145,7 @@ export default function Home() {
           {/* Third Image - Coffee */}
           <div className="relative h-[500px] rounded-2xl overflow-hidden">
             <Image
-              src="/coffee-drinks.jpg" // Add coffee drinks image
+              src="/2.jpg" // Add coffee drinks image
               alt="Variety of coffee drinks"
               fill
               className="object-cover hover:scale-105 transition duration-500"
