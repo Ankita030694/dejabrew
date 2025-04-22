@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface NavbarProps {
   onBookingOpen: () => void;
@@ -43,11 +44,27 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
                 </svg>
               </button>
 
-              <h1 className="text-3xl font-bold font-sans tracking-wider">DEJA BREW</h1>
+              <div className="h-17 flex items-center">
+                <Image 
+                  src="/logo9.svg" 
+                  alt="Deja Brew Logo" 
+                  width={168} 
+                  height={67}
+                  className="w-auto h-full"
+                />
+              </div>
               <div className="w-8"></div>
             </div>
 
-            <h1 className="hidden md:block text-4xl font-bold font-sans tracking-wider">DEJA BREW</h1>
+            <div className="hidden md:block h-22">
+              <Image 
+                src="/logo9.svg" 
+                alt="Deja Brew Logo" 
+                width={252} 
+                height={90}
+                className="w-auto h-full"
+              />
+            </div>
 
             <button
               onClick={onBookingOpen}
@@ -61,7 +78,7 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
           <div className="hidden md:flex items-center gap-8">
             <a href="/" className="text-white/80 hover:text-white">HOME</a>
             <a href="about" className="text-white/80 hover:text-white">ABOUT US</a>
-            <a href="menu" className="text-white/80 hover:text-white">MENU</a>
+            <a href="/dejamenu.pdf" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">MENU</a>
             <a href="contact" className="text-white/80 hover:text-white">CONTACT US</a>
           </div>
         </div>
@@ -86,7 +103,7 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
 
         <div className="flex flex-col items-center justify-start pt-10 gap-8">
           <a href="#about" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>About us</a>
-          <a href="#menu" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Menu</a>
+          <a href="/dejamenu.pdf" target="_blank" rel="noopener noreferrer" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Menu</a>
           <a href="#book" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Book a table</a>
           <a href="#contact" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Contact us</a>
           
