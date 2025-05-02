@@ -1,6 +1,6 @@
 .marquee-container {
   background-color: #F5E6D3;
-  padding: 1.5rem 0;
+  padding: 0px;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -20,13 +20,13 @@
 }
 
 .marquee-text {
-  font-size: 1.875rem;
+  font-size: 1rem;
   margin: 0 1rem;
   color: #1A0F00;
 }
 
 @media (min-width: 768px) {
   .marquee-text {
-    font-size: 2.25rem;
+    font-size: 1.5rem;
   }
 } 

@@ -171,7 +171,9 @@ const ContactUs = () => {
               </p>
               <div className="flex items-center space-x-3 mt-4">
                 <span className="text-[#C8A27A]">📞</span>
-                <span className="text-white/80 font-sans">+91 8447441441</span>
+                <span className="text-white/80 font-sans"> <a href="tel:+918447441441" className="text-white/70 hover:text-[#C8A27A] transition">
+                  +91 8447441441
+                </a> </span>
               </div>
             </div>
 

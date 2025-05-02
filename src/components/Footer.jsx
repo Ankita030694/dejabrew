@@ -23,10 +23,17 @@ const Footer = () => {
               Artisanal coffee and world cuisine, <br /> crafted with precision and served with passion.
             </p>
             <ul className="space-y-3 font-sans text-white/70 mb-6">
-              <li>123 Coffee Street</li>
-              <li>City, State 12345</li>
-              <li>info@dejabrew.com</li>
-              <li>(123) 456-7890</li>
+              <li>M-20, Block M , Greater Kailash-2 , Delhi - 110048</li>
+              <li>
+                <a href="mailto:dejabrewmail@gmail.com" className="text-white/70 hover:text-[#C8A27A] transition">
+                  dejabrewmail@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+918447441441" className="text-white/70 hover:text-[#C8A27A] transition">
+                  +91 8447441441
+                </a>
+              </li>
             </ul>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition">
