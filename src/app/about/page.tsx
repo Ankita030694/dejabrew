@@ -155,12 +155,13 @@ const About = () => {
             {/* Left Image */}
             <div className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden">
               <Image
-                src="/about-image.jpg" // Add this image to your public folder
+                src="/uncle.png" // Add this image to your public folder
                 alt="About us image"
                 fill
                 className="object-cover"
               />
             </div>
+           
 
             {/* Right Text Content */}
             <div className="space-y-6">
@@ -189,52 +190,53 @@ const About = () => {
           </div>
         </div>
       </section>
+      <div className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden">
+              <Image
+                src="/team.JPG" // Add this image to your public folder
+                alt="About us image"
+                fill
+                className="object-cover"
+              />
+            </div>
 
-      {/* Taps Luxury Experience Section */}
+     
       <section className="py-16 md:py-24 bg-[#1A0F00]">
         <div className="container mx-auto px-6 md:px-20">
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="space-y-6 text-lg md:text-xl text-white/80">
+          <div className="flex flex-col items-center space-y-12">
+            <div className="text-center text-lg md:text-xl text-white/80 max-w-2xl">
               <p>
                 What began as a neighborhood hideaway soon gave rise to something larger — Deja Brew Taps, the first luxury beer catering experience. Pioneering the premium craft beer segment, Taps has become synonymous with elevated celebration.
               </p>
-              
-              <p>
+              <p className="mt-4">
                 In just two years, Deja Brew Taps has made its mark across India's most iconic destinations, pouring at elite venues such as:
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
                 <p className="text-xl font-serif text-white mb-2">Fairmont Jaipur</p>
               </div>
-              
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300">
+              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
                 <p className="text-xl font-serif text-white mb-2">Suryagarh Palace, Jaisalmer</p>
               </div>
-              
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300">
+              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
                 <p className="text-xl font-serif text-white mb-2">Raas Rajmahal, Jaipur</p>
               </div>
-              
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300">
+              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
                 <p className="text-xl font-serif text-white mb-2">Umaid Bhawan Palace, Jodhpur</p>
               </div>
-              
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300">
+              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
                 <p className="text-xl font-serif text-white mb-2">Raas Devigarh, Udaipur</p>
               </div>
-              
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300">
+              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
                 <p className="text-xl font-serif text-white mb-2">Raas Chhatrasagar</p>
               </div>
-              
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300">
+              {/* <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
                 <p className="text-xl font-serif text-white mb-2">Westin Pushkar, and more.</p>
-              </div>
+              </div> */}
             </div>
             
-            <div className="text-center mt-12 text-xl md:text-2xl font-serif text-[#C8A27A] italic">
+            <div className="text-center text-xl md:text-2xl font-serif text-[#C8A27A] italic">
               <p>We don't just serve beer — we pour experiences. And increasingly, we're pouring beyond borders.</p>
             </div>
           </div>

@@ -24,46 +24,108 @@ export default function Home() {
   const [beerCount, setBeerCount] = useState(0);
   const counterRef = useRef(null);
   const animationTriggered = useRef(false);
+  const [loading, setLoading] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Handle loading state
   useEffect(() => {
+    // Set a timeout to ensure minimum loading time for visual appeal
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000); // Adjust time as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Handle video playback rate when it loads
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 2.0; // Play at 2x speed
+    }
+  }, [loading]);
+
+  // Beer counter animation with guaranteed execution
+  useEffect(() => {
+    // Function to start the counter animation
+    const startCounterAnimation = () => {
+      if (animationTriggered.current) return; // Prevent double execution
+      console.log("Starting beer counter animation");
+      animationTriggered.current = true;
+      
+      let startCount = 0;
+      const endCount = 1000;
+      const duration = 2000; // 2 seconds
+      const interval = 20; // Update every 20ms
+      const steps = duration / interval;
+      const increment = endCount / steps;
+
+      const timer = setInterval(() => {
+        startCount += increment;
+        if (startCount >= endCount) {
+          setBeerCount(endCount);
+          clearInterval(timer);
+        } else {
+          setBeerCount(Math.floor(startCount));
+        }
+      }, interval);
+    };
+
+    // Add intersection observer for scroll-based trigger
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting && !animationTriggered.current) {
-          animationTriggered.current = true;
-
-          let startCount = 0;
-          const endCount = 1000;
-          const duration = 2000; // 2 seconds
-          const interval = 20; // Update every 20ms
-          const steps = duration / interval;
-          const increment = endCount / steps;
-
-          const timer = setInterval(() => {
-            startCount += increment;
-            if (startCount >= endCount) {
-              setBeerCount(endCount);
-              clearInterval(timer);
-            } else {
-              setBeerCount(Math.floor(startCount));
-            }
-          }, interval);
+        if (entry.isIntersecting) {
+          console.log("Counter in view - triggering animation");
+          startCounterAnimation();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1, rootMargin: "100px" }
     );
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
-    }
+    // Set a fallback timer to ensure animation runs even if intersection detection fails
+    const fallbackTimer = setTimeout(() => {
+      if (!animationTriggered.current) {
+        console.log("Fallback timer triggering animation");
+        startCounterAnimation();
+      }
+    }, 3000); // 3 seconds after component mounts
+
+    // Attach observer after a delay to ensure DOM is ready
+    const observerTimer = setTimeout(() => {
+      if (counterRef.current) {
+        observer.observe(counterRef.current);
+        console.log("Observer attached to counter element");
+      } else {
+        console.log("Counter element reference not found - will use fallback");
+      }
+    }, 1000);
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
-      }
+      clearTimeout(fallbackTimer);
+      clearTimeout(observerTimer);
+      if (counterRef.current) observer.unobserve(counterRef.current);
     };
   }, []);
 
+  // If loading, show the loader video
+  if (loading) {
+    return (
+      <div className="fixed inset-0 w-full h-full bg-black flex items-center justify-center z-50">
+        <video 
+          ref={videoRef}
+          autoPlay 
+          muted 
+          playsInline
+          className="max-w-full max-h-full object-contain"
+        >
+          <source src="/loader.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    );
+  }
+
+  // Main content rendered after loading
   return (
     <div
       className={`min-h-screen bg-black text-white ${playfair.variable} ${montserrat.variable}`}
@@ -144,10 +206,6 @@ export default function Home() {
           <span className="marquee-text font-serif">•</span>
           <span className="marquee-text font-serif">SERVING THE BEST BEER</span>
           <span className="marquee-text font-serif">•</span>
-          <span className="marquee-text font-serif">SERVING THE BEST BEER</span>
-          <span className="marquee-text font-serif">•</span>
-          <span className="marquee-text font-serif">SERVING THE BEST BEER</span>
-          <span className="marquee-text font-serif">•</span>
         </div>
       </div>
 
@@ -177,8 +235,8 @@ export default function Home() {
               </p>
 
               <p>
-                At Deja Brew, every visit is a fresh experience. Whether you’re
-                here to work, unwind, or connect, we’ve created a space that
+                At Deja Brew, every visit is a fresh experience. Whether you're
+                here to work, unwind, or connect, we've created a space that
                 feels familiar yet refreshingly unexpected — never quite déjà
                 vu.
               </p>
