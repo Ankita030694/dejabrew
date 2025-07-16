@@ -1,0 +1,38 @@
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .marquee-content {
+    display: flex;
+    animation: marquee 15s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* News carousel animation */
+  .animate-scroll-news {
+    animation: scroll-news 20s linear infinite;
+  }
+  
+  @keyframes scroll-news {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Pause animation on hover */
+  .animate-scroll-news:hover {
+    animation-play-state: paused;
+  }

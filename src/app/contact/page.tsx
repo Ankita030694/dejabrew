@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import Navbar from '@/components/Navbar';
+import ReservationForm from '@/components/ReservationForm';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/firebase/firebase';
 // Font setup
@@ -100,6 +101,7 @@ const ContactUs = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -141,7 +143,7 @@ const ContactUs = () => {
 
   return (
     <div className={`min-h-screen bg-[#1A0F00] text-white ${playfair.variable} ${montserrat.variable}`}>
-      <Navbar onBookingOpen={() => {}} />
+      <Navbar onBookingOpen={() => setIsBookingOpen(true)} />
       {/* Background Image Container */}
       <div className="absolute top-0 left-0 w-full h-screen z-0" >
         <Image
@@ -284,6 +286,8 @@ const ContactUs = () => {
           </motion.div>
         </div>
       </div>
+      {/* Booking Form Modal */}
+      {isBookingOpen && <ReservationForm onClose={() => setIsBookingOpen(false)} />}
     </div>
   );
 };

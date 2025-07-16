@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Playfair_Display, Montserrat } from "next/font/google";
-import BookingForm from "@/components/BookingForm";
+import ReservationForm from "@/components/ReservationForm";
 import "../styles/marquee.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -148,12 +148,12 @@ export default function Home() {
       <main className="relative min-h-screen flex items-center justify-center px-4 md:px-0 pt-20 md:pt-0">
         <div className="z-10 text-center">
           <p className="text-2xl md:text-3xl italic mb-4 md:mb-6 font-sans">
-            A hybrid Lounge Craft Beers
+            A hybrid Lounge 
           </p>
-          <h2 className="text-5xl md:text-8xl font-serif mb-4 md:mb-6">
-            Artisanal Coffee,
+          <h2 className="text-5xl md:text-6xl font-serif mb-4 md:mb-6">
+          Craft Beers, Artisanal Coffee,
           </h2>
-          <h2 className="text-5xl md:text-8xl font-serif">World Cuisine.</h2>
+          <h2 className="text-5xl md:text-6xl font-serif">World Cuisine</h2>
         </div>
       </main>
 
@@ -181,6 +181,8 @@ export default function Home() {
           <span className="marquee-text font-serif">SERVING THE BEST CRAFT BEER</span>
           <span className="marquee-text font-serif">•</span>
             <span className="marquee-text font-serif">SERVING THE BEST CRAFT BEER</span>
+          <span className="marquee-text font-serif">•</span>
+          <span className="marquee-text font-serif">SERVING THE BEST CRAFT BEER</span>
           <span className="marquee-text font-serif">•</span>
           <span className="marquee-text font-serif">SERVING THE BEST CRAFT BEER</span>
           <span className="marquee-text font-serif">•</span>
@@ -428,6 +430,7 @@ export default function Home() {
             />
           </div>
         </div>
+      
       </section>
 
       {/* Separator */}
@@ -441,7 +444,7 @@ export default function Home() {
       <Footer />
 
       {/* Booking Form Modal */}
-      {isBookingOpen && <BookingForm onClose={() => setIsBookingOpen(false)} />}
+      {isBookingOpen && <ReservationForm onClose={() => setIsBookingOpen(false)} />}
     </div>
   );
 }
