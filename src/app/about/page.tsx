@@ -483,8 +483,8 @@ const About = () => {
             <div className="marquee-content">
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand1.png"
-                  alt="Brand 1"
+                  src="/brands/brands (1).png"
+                  alt="Cherish"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -492,8 +492,8 @@ const About = () => {
               </div>
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand2.png"
-                  alt="Brand 2"
+                  src="/brands/brands (2).png"
+                  alt="Ministry of Beer"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -501,8 +501,8 @@ const About = () => {
               </div>
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand3.png"
-                  alt="Brand 3"
+                  src="/brands/brands (3).png"
+                  alt="Anand Villas"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -510,8 +510,8 @@ const About = () => {
               </div>
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand4.png"
-                  alt="Brand 4"
+                  src="/brands/brands (4).png"
+                  alt="Sufiana"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -519,8 +519,8 @@ const About = () => {
               </div>
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand5.png"
-                  alt="Brand 5"
+                  src="/brands/brands (5).png"
+                  alt="Ala Chaat"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -528,8 +528,8 @@ const About = () => {
               </div>
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand6.png"
-                  alt="Brand 6"
+                  src="/brands/brands.png"
+                  alt="Deja Brew Taps"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -538,8 +538,8 @@ const About = () => {
               {/* Duplicate for smooth loop */}
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand1.png"
-                  alt="Brand 1"
+                  src="/brands/brands (1).png"
+                  alt="Cherish"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -547,8 +547,8 @@ const About = () => {
               </div>
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand2.png"
-                  alt="Brand 2"
+                  src="/brands/brands (2).png"
+                  alt="Ministry of Beer"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -556,8 +556,8 @@ const About = () => {
               </div>
               <div className="mx-8 flex items-center">
                 <Image
-                  src="/brand3.png"
-                  alt="Brand 3"
+                  src="/brands/brands (3).png"
+                  alt="Anand Villas"
                   width={200}
                   height={100}
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -570,29 +570,56 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
               <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image src="/brand-logo1.png" alt="Brand Logo 1" fill className="object-cover" />
+                <Image src="/brands/brands (1).png" alt="Cherish" fill className="object-cover" />
               </div>
-              <h3 className="text-2xl font-serif text-white mb-4">Brand Name 1</h3>
-              <p className="text-white/70 mb-4">Premium craft spirits and cocktail experiences.</p>
-              <p className="text-[#C8A27A] text-sm italic">Launching Soon</p>
+              <h3 className="text-2xl font-serif text-white mb-4">Cherish</h3>
+              <p className="text-white/70 mb-4">With 25 years of legacy, Cherish is a name synonymous with premium ballroom experiences. Specializing in grand weddings and bespoke celebrations.</p>
+              <p className="text-[#C8A27A] text-sm italic">25 Years of Excellence</p>
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
               <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image src="/brand-logo2.png" alt="Brand Logo 2" fill className="object-cover" />
+                <Image src="/brands/brands (2).png" alt="Ministry of Beer" fill className="object-cover" />
               </div>
-              <h3 className="text-2xl font-serif text-white mb-4">Brand Name 2</h3>
-              <p className="text-white/70 mb-4">Artisanal coffee and café culture redefined.</p>
-              <p className="text-[#C8A27A] text-sm italic">In Development</p>
+              <h3 className="text-2xl font-serif text-white mb-4">Ministry of Beer</h3>
+              <p className="text-white/70 mb-4">Delhi's original microbrewery, pioneering the brewing culture in the capital for over a decade with authentic brews and buzzing vibes.</p>
+              <p className="text-[#C8A27A] text-sm italic">Delhi's First Microbrewery</p>
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
               <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image src="/brand-logo3.png" alt="Brand Logo 3" fill className="object-cover" />
+                <Image src="/brands/brands (3).png" alt="Anand Villas" fill className="object-cover" />
               </div>
-              <h3 className="text-2xl font-serif text-white mb-4">Brand Name 3</h3>
-              <p className="text-white/70 mb-4">Luxury event planning and hospitality services.</p>
-              <p className="text-[#C8A27A] text-sm italic">Coming 2024</p>
+              <h3 className="text-2xl font-serif text-white mb-4">Anand Villas</h3>
+              <p className="text-white/70 mb-4">A boutique hotel in West Delhi that blends charm with convenience, perfect for intimate gatherings and personalized hospitality experiences.</p>
+              <p className="text-[#C8A27A] text-sm italic">Boutique Hospitality</p>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
+              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
+                <Image src="/brands/brands (4).png" alt="Sufiana" fill className="object-cover" />
+              </div>
+              <h3 className="text-2xl font-serif text-white mb-4">Sufiana</h3>
+              <p className="text-white/70 mb-4">A culinary destination serving refined Indian cuisine in an ambience soaked in culture, promising a gastronomic journey in true sufiana andaaz.</p>
+              <p className="text-[#C8A27A] text-sm italic">Cultural Dining Experience</p>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
+              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
+                <Image src="/brands/brands (5).png" alt="Ala Chaat" fill className="object-cover" />
+              </div>
+              <h3 className="text-2xl font-serif text-white mb-4">Ala Chaat</h3>
+              <p className="text-white/70 mb-4">Bringing authentic street flavours to curated occasions, redefining chaat catering for over five years with zest and nostalgia.</p>
+              <p className="text-[#C8A27A] text-sm italic">Street Food Elevated</p>
+            </div>
+
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
+              <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
+                <Image src="/brands/brands.png" alt="Deja Brew Taps" fill className="object-cover" />
+              </div>
+              <h3 className="text-2xl font-serif text-white mb-4">Deja Brew Taps</h3>
+              <p className="text-white/70 mb-4">India's first portable craft beer bar, delivering freshly brewed luxury on wheels with 24/7 chilled pours and curated beer-tasting experiences.</p>
+              <p className="text-[#C8A27A] text-sm italic">Luxury on Wheels</p>
             </div>
           </div>
         </div>

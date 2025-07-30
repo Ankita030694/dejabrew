@@ -25,7 +25,7 @@ const Footer = () => {
                 />
               </div>
               <p className="text-white/70 font-sans mb-6">
-                Artisanal coffee and world cuisine, <br /> crafted with precision and served with passion.
+              At Deja Brew, every visit is a fresh experience. Whether you're here to work, unwind, or connect, we've created a space that feels familiar yet refreshingly unexpected — never quite déjà vu.
               </p>
               <ul className="space-y-3 font-sans text-white/70 mb-6">
                 <li>M-20, Block M , Greater Kailash-2 , Delhi - 110048</li>

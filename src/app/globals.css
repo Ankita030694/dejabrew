@@ -25,6 +25,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Hide scrollbar for webkit browsers */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
 /* Beer bubble animations */
 @keyframes bubble1 {
   0% { transform: translateY(0); opacity: 0; }

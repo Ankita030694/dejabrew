@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import ReservationForm from "@/components/ReservationForm";
+import ImageCarousel from "@/components/ImageCarousel";
 import "../styles/marquee.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -133,7 +134,7 @@ export default function Home() {
       {/* Background Image Container */}
       <div className="absolute top-0 left-0 w-full h-screen z-0">
         <Image
-          src="/hero.jpg"
+          src="/homebanner.jpg"
           alt="Restaurant background"
           fill
           priority
@@ -225,22 +226,10 @@ export default function Home() {
 
             <div className=" md:space-y-8 text-lg md:text-xl text-white/80">
               <p>
-                Nestled in the heart of South Delhi, Deja Brew is a
-                one-of-a-kind hybrid lounge that blends the comforting aroma of
-                freshly brewed coffee with the bold flavors of craft beer, all
-                under one beautifully curated roof. Start your day with our
-                artisanal coffees, made from carefully selected beans and brewed
-                to perfection. As the day transitions, so does the vibe — from
-                cozy café to lively lounge — where hand-crafted beers, signature
-                cocktails, and an eclectic world cuisine menu await to elevate
-                your evening.
-              </p>
+              The idea behind Deja Brew was simple - to create a space that flows with your day.
+ A place where you can start your morning with a soulful cup of coffee, move into easy conversations over craft beer, and unwind by evening with cocktails that speak your vibe.Deja Brew is more than just a hybrid lounge- it’s an all-day escape. <br />
+Our name says it all- “Deja Brew” is a feeling. It’s that instant connection you get when you walk in and want to come back, again and again.
 
-              <p>
-                At Deja Brew, every visit is a fresh experience. Whether you're
-                here to work, unwind, or connect, we've created a space that
-                feels familiar yet refreshingly unexpected — never quite déjà
-                vu.
               </p>
             </div>
 
@@ -389,48 +378,68 @@ export default function Home() {
           A Wholesome Experience
         </h2>
 
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
-          {/* First Image - Food */}
-          <div className="relative h-[300px] md:h-[450px] rounded-2xl overflow-hidden">
-            <Image
-              src="/1.jpg"
-              alt="Elegant plated dish with flowers"
-              fill
-              className="object-cover hover:scale-105 transition duration-500"
-            />
-          </div>
-
-          {/* Second Image - Beer and Snacks */}
-          <div className="relative h-[300px] md:h-[450px] rounded-2xl overflow-hidden">
-            <Image
-              src="/3.jpg"
-              alt="Beer mugs with fried snacks"
-              fill
-              className="object-cover hover:scale-105 transition duration-500"
-            />
-          </div>
-
-          {/* Third Image - Coffee */}
-          <div className="relative h-[300px] md:h-[450px] rounded-2xl overflow-hidden">
-            <Image
-              src="/2.jpg"
-              alt="Variety of coffee drinks"
-              fill
-              className="object-cover hover:scale-105 transition duration-500"
-            />
-          </div>
-
-          {/* Fourth Image */}
-          <div className="relative h-[300px] md:h-[450px] rounded-2xl overflow-hidden">
-            <Image
-              src="/4.jpg"
-              alt="Variety of coffee drinks"
-              fill
-              className="object-cover hover:scale-105 transition duration-500"
-            />
-          </div>
+        <div className="container mx-auto">
+          <ImageCarousel 
+            images={[
+              "/1.jpg",
+              "/2.jpg", 
+              "/3.jpg",
+              "/4.jpg",
+              "/home/5.png",
+              "/home/6.png",
+              "/home/7.png",
+              "/home/9.png",
+              "/home/10.png",
+              "/home/11.png",
+              "/home/12.png",
+              "/home/13.png",
+              "/home/14.png",
+              "/home/16.png",
+              "/home/17.png",
+              "/home/18.png",
+              "/home/19.png",
+              "/home/20.png",
+              "/home/21.png",
+              "/home/22.png",
+              "/home/23.png",
+              "/home/24.png",
+              "/home/27.png",
+              "/home/30.png",
+              "/home/31.png",
+              "/home/32.png",
+              "/home/33.png"
+            ]}
+            altTexts={[
+              "Elegant plated dish with flowers",
+              "Variety of coffee drinks",
+              "Beer mugs with fried snacks",
+              "Delicious food presentation",
+              "Craft beer selection",
+              "Artisanal coffee preparation",
+              "Gourmet dining experience",
+              "Fresh ingredients showcase",
+              "Chef's special creation",
+              "Premium beverage selection",
+              "Fine dining atmosphere",
+              "Culinary artistry display",
+              "Signature cocktail presentation",
+              "Fresh local ingredients",
+              "Expert culinary preparation",
+              "Elegant table setting",
+              "Craft beer brewing process",
+              "Coffee roasting expertise",
+              "International cuisine showcase",
+              "Seasonal menu highlights",
+              "Chef's tasting menu",
+              "Wine and beverage pairing",
+              "Artisanal bread making",
+              "Fresh seafood preparation",
+              "Organic produce display",
+              "Traditional cooking methods",
+              "Modern culinary techniques"
+            ]}
+          />
         </div>
-      
       </section>
 
       {/* Separator */}

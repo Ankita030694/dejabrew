@@ -319,8 +319,13 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose }) => {
   const isLunchDisabled = isMarch14th(formData.date);
 
   return (
-    <div className={`fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 ${playfair.variable} ${montserrat.variable}`}>
-      <div className="relative bg-gradient-to-br from-[#1A0F00] to-black border border-[#C8A27A]/30 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+    <div className={`fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 ${playfair.variable} ${montserrat.variable}`} style={{
+      backgroundImage: 'url(/reservation.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    }}>
+      <div className="relative bg-gradient-to-br from-[#1A0F00]/80 to-black/80 border border-[#C8A27A]/30 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto backdrop-blur-sm">
         {/* Close Button */}
         <button
           onClick={onClose}
