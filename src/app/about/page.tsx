@@ -100,7 +100,7 @@ const About = () => {
                   src="/directors/NavinSachdeva.png"
                   alt="Navin Sachdeva"
                   fill
-                  className="object-cover group-hover:grayscale transition-all duration-500"
+                  className="object-cover transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -119,7 +119,7 @@ const About = () => {
                   src="/director2.jpg"
                   alt="Gunjan Chadha"
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className="object-cover transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -138,7 +138,7 @@ const About = () => {
                   src="/directors/Rauna1.png"
                   alt="Raunaq Singh"
                   fill
-                  className="object-cover group-hover:grayscale transition-all duration-500"
+                  className="object-cover transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -156,7 +156,7 @@ const About = () => {
                   src="/directors/kRATIKA.png"
                   alt="Kratika Gupta"
                   fill
-                  className="object-cover group-hover:grayscale transition-all duration-500"
+                  className="object-cover transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -434,36 +434,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Venues Grid */}
-          <div className="mt-16">
-            <h3 className="text-3xl font-serif text-center text-white mb-12">Our Elite Partners</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <p className="text-xl font-serif text-white mb-2">Fairmont Jaipur</p>
-                <p className="text-[#C8A27A] text-sm">Luxury Hotel</p>
-              </div>
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <p className="text-xl font-serif text-white mb-2">Suryagarh Palace</p>
-                <p className="text-[#C8A27A] text-sm">Heritage Resort</p>
-              </div>
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <p className="text-xl font-serif text-white mb-2">Umaid Bhawan Palace</p>
-                <p className="text-[#C8A27A] text-sm">Royal Palace</p>
-              </div>
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <p className="text-xl font-serif text-white mb-2">Raas Devigarh</p>
-                <p className="text-[#C8A27A] text-sm">Luxury Resort</p>
-              </div>
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <p className="text-xl font-serif text-white mb-2">Raas Chhatrasagar</p>
-                <p className="text-[#C8A27A] text-sm">Boutique Camp</p>
-              </div>
-              <div className="bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <p className="text-xl font-serif text-white mb-2">The Westin Pushkar</p>
-                <p className="text-[#C8A27A] text-sm">Resort & Spa</p>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </section>
 
@@ -478,93 +449,7 @@ const About = () => {
             </p>
           </div>
 
-          {/* Scrolling Carousel for Brands */}
-          <div className="marquee-container mb-16">
-            <div className="marquee-content">
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands (1).png"
-                  alt="Cherish"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands (2).png"
-                  alt="Ministry of Beer"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands (3).png"
-                  alt="Anand Villas"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands (4).png"
-                  alt="Sufiana"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands (5).png"
-                  alt="Ala Chaat"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands.png"
-                  alt="Deja Brew Taps"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              {/* Duplicate for smooth loop */}
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands (1).png"
-                  alt="Cherish"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands (2).png"
-                  alt="Ministry of Beer"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-              <div className="mx-8 flex items-center">
-                <Image
-                  src="/brands/brands (3).png"
-                  alt="Anand Villas"
-                  width={200}
-                  height={100}
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </div>
-            </div>
-          </div>
+         
 
           {/* Brand Details Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
