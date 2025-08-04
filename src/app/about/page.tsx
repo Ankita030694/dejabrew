@@ -20,6 +20,65 @@ const montserrat = Montserrat({
 
 const About = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false)
+  const [currentNewsSlide, setCurrentNewsSlide] = useState(0)
+
+  // News articles data
+  const newsArticles = [
+    {
+      id: 1,
+      image: "/newsletter/newsletter-1.jpeg",
+      publication: "Times of India",
+      title: "Luxury Beer Catering Redefines Elite Events",
+      description: "How Deja Brew Taps is transforming the premium events landscape with craft beer excellence."
+    },
+    {
+      id: 2,
+      image: "/newsletter/newsletter-2.jpeg",
+      publication: "Economic Times",
+      title: "From Local Bar to Luxury Brand",
+      description: "The remarkable journey of four entrepreneurs who built a luxury empire."
+    },
+    {
+      id: 3,
+      image: "/newsletter/newsletter-3.jpeg",
+      publication: "Hindustan Times",
+      title: "Rajasthan's Royal Palaces Choose Deja Brew",
+      description: "How we became the preferred choice for India's most prestigious venues."
+    },
+    {
+      id: 4,
+      image: "/newsletter/newsletter-4.jpeg",
+      publication: "Business Standard",
+      title: "Craft Beer Revolution in Luxury Hospitality",
+      description: "Industry analysis on how Deja Brew is changing the game."
+    },
+    {
+      id: 5,
+      image: "/newsletter/newsletter-5.jpeg",
+      publication: "Indian Express",
+      title: "International Expansion on the Horizon",
+      description: "Exclusive interview about our global expansion plans."
+    },
+    {
+      id: 6,
+      image: "/newsletter/newsletter-6.jpeg",
+      publication: "Forbes India",
+      title: "Young Entrepreneurs Making Waves",
+      description: "Featured in Forbes' list of innovative young entrepreneurs."
+    }
+  ]
+
+  const nextSlide = () => {
+    setCurrentNewsSlide((prev) => Math.min(prev + 1, newsArticles.length - 3))
+  }
+
+  const prevSlide = () => {
+    setCurrentNewsSlide((prev) => Math.max(prev - 1, 0))
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentNewsSlide(Math.min(index, newsArticles.length - 3))
+  }
 
   return (
     <div className={`min-h-screen bg-black text-white ${playfair.variable} ${montserrat.variable}`}>
@@ -28,12 +87,12 @@ const About = () => {
       {/* Hero Section with Full Picture */}
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/about-hero.jpg" alt="About Us Hero" fill className="object-cover" priority />
+          <Image src="/abouthero.jpg" alt="About Us Hero" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="text-center">
-            <h1 className="text-6xl md:text-8xl font-serif mb-6 text-white">Our Story</h1>
+            <h1 className="text-6xl md:text-8xl font-serif mb-6 text-white">About Us</h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto px-6">
               Four visionaries. One dream. Endless possibilities.
             </p>
@@ -49,7 +108,7 @@ const About = () => {
             <div className="w-full md:w-1/2 flex-shrink-0 flex items-center justify-center mb-10 md:mb-0">
               <div className="relative w-full h-72 md:h-[420px] rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/about-ourstory.jpg"
+                  src="/aboutleft.png"
                   alt="Deja Brew Ambience"
                   fill
                   className="object-cover"
@@ -63,18 +122,11 @@ const About = () => {
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-4xl md:text-6xl font-serif mb-8 text-white text-left">Our Story</h2>
               <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed text-left">
-                The idea behind Deja Brew was simple — to create a space that flows with your day. A place where you can
-                start your morning with a soulful cup of coffee, move into easy conversations over craft beer, and
-                unwind by evening with cocktails that speak your vibe.
-                <br />
-                <br />
-                Deja Brew is more than just a hybrid lounge — it's an all-day escape. Designed to feel like your second
-                home, it brings together artisanal coffee, freshly brewed craft beer, signature cocktails, and a
-                globally inspired kitchen, all in one warm, tastefully curated setting.
-                <br />
-                <br />
-                Our name says it all — "Deja Brew" is a feeling. It's that instant connection you get when you walk in
-                and want to come back, again and again.
+                The idea behind Deja Brew was simple — to create a space that flows with your day.
+                A place where you can start your morning with a soulful cup of coffee, move into easy conversations over craft beer, and unwind by evening with cocktails that speak your vibe.
+                Deja Brew is more than just a hybrid lounge — it’s an all-day escape.
+
+                Our name says it all — “Deja Brew” is a feeling. It’s that instant connection you get when you walk in and want to come back, again and again.
               </p>
             </div>
           </div>
@@ -82,7 +134,7 @@ const About = () => {
       </section>
 
       {/* Story Four - Directors Section */}
-      <section className="py-16 md:py-24 bg-[#1A0F00]">
+      <section className="py-8 bg-[#1A0F00]">
         <div className="container mx-auto px-6 md:px-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-serif mb-6 text-[#C8A27A]">The Story of Four</h2>
@@ -116,7 +168,7 @@ const About = () => {
             <div className="text-center group">
               <div className="relative h-80 w-full mb-6 rounded-2xl overflow-hidden">
                 <Image
-                  src="/director2.jpg"
+                  src="/directors/gunjan.PNG"
                   alt="Gunjan Chadha"
                   fill
                   className="object-cover transition-all duration-500"
@@ -171,8 +223,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* Newspaper Coverage Section - Auto-playing Carousel */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-[#1A0F00] to-black">
+      {/* Newspaper Coverage Section - Manual Carousel */}
+      <section className="py-8 bg-gradient-to-b from-[#1A0F00] to-black">
         <div className="container mx-auto px-6 md:px-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-serif mb-6 text-white">In the News</h2>
@@ -181,202 +233,77 @@ const About = () => {
             </p>
           </div>
 
-          {/* Auto-playing Carousel */}
-          <div className="relative overflow-hidden">
-            <div className="flex animate-scroll-news">
-              {/* News Article 1 */}
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-1.jpeg"
-                      alt="Newspaper coverage 1"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+          {/* Manual Carousel - 3 Cards Visible */}
+          <div className="relative max-w-7xl mx-auto">
+            {/* Main Carousel Container */}
+            <div className="relative overflow-hidden rounded-2xl">
+              <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentNewsSlide * (100/3)}%)` }}>
+                {newsArticles.map((article, index) => (
+                  <div key={article.id} className="flex-shrink-0 w-1/3 px-2">
+                    <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
+                          src={article.image}
+                          alt={`Newspaper coverage ${index + 1}`}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <p className="text-[#C8A27A] text-sm font-medium mb-2">{article.publication}</p>
+                        <h3 className="text-lg md:text-xl font-serif text-white mb-3">
+                          "{article.title}"
+                        </h3>
+                        <p className="text-white/70 text-sm leading-relaxed">
+                          {article.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Times of India</p>
-                    <h3 className="text-xl font-serif text-white mb-3">
-                      "Luxury Beer Catering Redefines Elite Events"
-                    </h3>
-                    <p className="text-white/70 text-sm">
-                      How Deja Brew Taps is transforming the premium events landscape with craft beer excellence.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* News Article 2 */}
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-2.jpeg"
-                      alt="Newspaper coverage 2"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Economic Times</p>
-                    <h3 className="text-xl font-serif text-white mb-3">"From Local Bar to Luxury Brand"</h3>
-                    <p className="text-white/70 text-sm">
-                      The remarkable journey of four entrepreneurs who built a luxury empire.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* News Article 3 */}
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-3.jpeg"
-                      alt="Newspaper coverage 3"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Hindustan Times</p>
-                    <h3 className="text-xl font-serif text-white mb-3">"Rajasthan's Royal Palaces Choose Deja Brew"</h3>
-                    <p className="text-white/70 text-sm">
-                      How we became the preferred choice for India's most prestigious venues.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* News Article 4 */}
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-4.jpeg"
-                      alt="Newspaper coverage 4"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Business Standard</p>
-                    <h3 className="text-xl font-serif text-white mb-3">
-                      "Craft Beer Revolution in Luxury Hospitality"
-                    </h3>
-                    <p className="text-white/70 text-sm">Industry analysis on how Deja Brew is changing the game.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* News Article 5 */}
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-5.jpeg"
-                      alt="Newspaper coverage 5"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Indian Express</p>
-                    <h3 className="text-xl font-serif text-white mb-3">"International Expansion on the Horizon"</h3>
-                    <p className="text-white/70 text-sm">Exclusive interview about our global expansion plans.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* News Article 6 */}
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-6.jpeg"
-                      alt="Newspaper coverage 6"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Forbes India</p>
-                    <h3 className="text-xl font-serif text-white mb-3">"Young Entrepreneurs Making Waves"</h3>
-                    <p className="text-white/70 text-sm">Featured in Forbes' list of innovative young entrepreneurs.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Duplicate articles for seamless loop */}
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-1.jpeg"
-                      alt="Newspaper coverage 1"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Times of India</p>
-                    <h3 className="text-xl font-serif text-white mb-3">
-                      "Luxury Beer Catering Redefines Elite Events"
-                    </h3>
-                    <p className="text-white/70 text-sm">
-                      How Deja Brew Taps is transforming the premium events landscape with craft beer excellence.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-2.jpeg"
-                      alt="Newspaper coverage 2"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Economic Times</p>
-                    <h3 className="text-xl font-serif text-white mb-3">"From Local Bar to Luxury Brand"</h3>
-                    <p className="text-white/70 text-sm">
-                      The remarkable journey of four entrepreneurs who built a luxury empire.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex-shrink-0 w-80 mx-4">
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src="/newsletter/newsletter-3.jpeg"
-                      alt="Newspaper coverage 3"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-[#C8A27A] text-sm font-medium mb-2">Hindustan Times</p>
-                    <h3 className="text-xl font-serif text-white mb-3">"Rajasthan's Royal Palaces Choose Deja Brew"</h3>
-                    <p className="text-white/70 text-sm">
-                      How we became the preferred choice for India's most prestigious venues.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevSlide}
+              disabled={currentNewsSlide === 0}
+              className={`absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full transition-all duration-300 backdrop-blur-sm border ${
+                currentNewsSlide === 0
+                  ? 'bg-black/30 text-white/30 border-white/10 cursor-not-allowed'
+                  : 'bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-[#C8A27A]/50'
+              }`}
+              aria-label="Previous article"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button
+              onClick={nextSlide}
+              disabled={currentNewsSlide >= newsArticles.length - 3}
+              className={`absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full transition-all duration-300 backdrop-blur-sm border ${
+                currentNewsSlide >= newsArticles.length - 3
+                  ? 'bg-black/30 text-white/30 border-white/10 cursor-not-allowed'
+                  : 'bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-[#C8A27A]/50'
+              }`}
+              aria-label="Next article"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+           
+
+           
           </div>
         </div>
       </section>
 
       {/* Deja Brew Taps with Map Section */}
-      <section className="py-16 md:py-24 bg-[#1A0F00]">
+      <section className="py-16 md:py-8 bg-[#1A0F00]">
         <div className="container mx-auto px-6 md:px-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-serif mb-6 text-[#C8A27A]">Deja Brew Taps</h2>
@@ -427,7 +354,7 @@ const About = () => {
                 Your browser does not support the video tag.
               </video>
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-              <div className="absolute bottom-6 left-6">
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center">
                 <p className="text-white text-lg font-serif">Our Expanding Footprint</p>
                 <p className="text-white/80 text-sm">Across India and Beyond</p>
               </div>
@@ -439,7 +366,7 @@ const About = () => {
       </section>
 
       {/* Other Brands Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-[#1A0F00] to-black">
+      <section className="py-8 md:py-8 bg-gradient-to-b from-[#1A0F00] to-black">
         <div className="container mx-auto px-6 md:px-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-serif mb-6 text-white">Our Brand Portfolio</h2>

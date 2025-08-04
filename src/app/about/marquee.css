@@ -18,21 +18,7 @@
     }
   }
   
-  /* News carousel animation */
-  .animate-scroll-news {
-    animation: scroll-news 20s linear infinite;
-  }
-  
-  @keyframes scroll-news {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
   /* Pause animation on hover */
-  .animate-scroll-news:hover {
+  .marquee-content:hover {
     animation-play-state: paused;
   }

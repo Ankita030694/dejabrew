@@ -89,21 +89,6 @@ export default function ImageCarousel({ images, altTexts }: ImageCarouselProps) 
         ))}
       </div>
 
-      {/* Navigation Dots */}
-      <div className="flex justify-center mt-6 space-x-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => scrollToIndex(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? "bg-[#C8A27A] scale-125"
-                : "bg-white/30 hover:bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
-
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
@@ -147,29 +132,7 @@ export default function ImageCarousel({ images, altTexts }: ImageCarouselProps) 
         </svg>
       </button>
 
-      {/* Auto-play indicator */}
-      <div className="absolute top-4 right-4">
-        <button
-          onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-          className={`p-2 rounded-full transition-all duration-300 ${
-            isAutoPlaying
-              ? "bg-[#C8A27A] text-black"
-              : "bg-white/20 text-white"
-          }`}
-        >
-          <svg
-            className="w-4 h-4"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {isAutoPlaying ? (
-              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-            ) : (
-              <path d="M8 5v14l11-7z" />
-            )}
-          </svg>
-        </button>
-      </div>
+
     </div>
   );
 } 

@@ -372,6 +372,96 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
         </div>
       </section>
 
+      {/* Full Screen Beer Video Section */}
+      <section className="relative w-full h-screen overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/beervideo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Optional overlay for better text readability if needed */}
+        <div className="absolute inset-0 bg-black/20"></div>
+      </section>
+
+      {/* Beer Showcase Section */}
+      <section className="bg-[#1A0F00] flex items-center p-6 md:p-20">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+          {/* Left Image */}
+          <div className="relative h-[400px] md:h-[700px] rounded-2xl overflow-hidden">
+            <Image
+              src="/aboutbeer.jpg"
+              alt="Craft beer selection"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Right Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <p className="text-4xl md:text-5xl italic font-serif text-[#C8A27A]">
+                Our Craft Beer Selection
+              </p>
+            
+            </div>
+
+            <div className="space-y-6 text-white/90">
+              <div className="space-y-4">
+                <div className="border-l-4 border-[#C8A27A] pl-6">
+                  <h3 className="text-xl md:text-2xl font-serif text-[#C8A27A] mb-2">
+                    Hefeweizen (Wheat Beer – German Style)
+                  </h3>
+                  <p className="text-lg leading-relaxed">
+                    A smooth, unfiltered wheat beer with notes of banana and clove. Light-bodied, refreshing, and slightly fruity — a classic from Bavaria.
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-[#C8A27A] pl-6">
+                  <h3 className="text-xl md:text-2xl font-serif text-[#C8A27A] mb-2">
+                    Stout (Dark Ale – English Style)
+                  </h3>
+                  <p className="text-lg leading-relaxed">
+                    Rich, roasted, and full-bodied with hints of coffee, dark chocolate. A creamy finish with low bitterness — the perfect slow sipper.
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-[#C8A27A] pl-6">
+                  <h3 className="text-xl md:text-2xl font-serif text-[#C8A27A] mb-2">
+                    NEIPA – New England IPA (Hazy IPA – American Style)
+                  </h3>
+                  <p className="text-lg leading-relaxed">
+                    Juicy and hop-forward with low bitterness, bursting with tropical fruit notes like mango, pineapple, and citrus. Hazy in appearance, smooth in sip.
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-[#C8A27A] pl-6">
+                  <h3 className="text-xl md:text-2xl font-serif text-[#C8A27A] mb-2">
+                    India Pale Ale – West Coast Style
+                  </h3>
+                  <p className="text-lg leading-relaxed">
+                    Bold and bitter with sharp citrus and piney hop notes. Dry finish and medium body — a classic IPA with a crisp punch.
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-[#C8A27A] pl-6">
+                  <h3 className="text-xl md:text-2xl font-serif text-[#C8A27A] mb-2">
+                    Belgian Blonde (Blonde Ale – Belgian Style)
+                  </h3>
+                  <p className="text-lg leading-relaxed">
+                    Golden-hued with subtle spice and soft malt sweetness. Lightly fruity and delicately bitter, this one's smooth, approachable, and a Belgian classic.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Wholesome Experience Section */}
       <section className="min-h-screen bg-[#1A0F00] px-6 md:px-20 py-16 md:py-8">
         <h2 className="text-5xl md:text-8xl font-serif text-center italic text-white mb-10 md:mb-20">
