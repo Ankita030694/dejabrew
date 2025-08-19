@@ -79,7 +79,7 @@ const About = () => {
   const goToSlide = (index: number) => {
     setCurrentNewsSlide(Math.min(index, newsArticles.length - 3))
   }
-
+ 
   return (
     <div className={`min-h-screen bg-black text-white ${playfair.variable} ${montserrat.variable}`}>
       <Navbar onBookingOpen={() => setIsBookingOpen(true)} />
@@ -92,7 +92,7 @@ const About = () => {
         </div>
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="text-center">
-            <h1 className="text-6xl md:text-8xl font-serif mb-6 text-white">About Us</h1>
+            <h1 className="text-6xl md:text-8xl font-serif mb-6 text-white">About Us</h1> 
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto px-6 mt-8">
               Four visionaries. One dream. Endless possibilities.
             </p>
