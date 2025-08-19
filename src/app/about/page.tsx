@@ -87,13 +87,13 @@ const About = () => {
       {/* Hero Section with Full Picture */}
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/abouthero.jpg" alt="About Us Hero" fill className="object-cover" priority />
+          <video src="/aboutvid.mp4" autoPlay loop muted playsInline className="object-cover" />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <div className="relative z-10 flex items-center justify-center h-full">
           <div className="text-center">
             <h1 className="text-6xl md:text-8xl font-serif mb-6 text-white">About Us</h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto px-6">
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto px-6 mt-8">
               Four visionaries. One dream. Endless possibilities.
             </p>
           </div>
@@ -124,9 +124,9 @@ const About = () => {
               <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed text-left">
                 The idea behind Deja Brew was simple — to create a space that flows with your day.
                 A place where you can start your morning with a soulful cup of coffee, move into easy conversations over craft beer, and unwind by evening with cocktails that speak your vibe.
-                Deja Brew is more than just a hybrid lounge — it’s an all-day escape.
+                Deja Brew is more than just a hybrid lounge — it's an all-day escape.
 
-                Our name says it all — “Deja Brew” is a feeling. It’s that instant connection you get when you walk in and want to come back, again and again.
+                Our name says it all — "Deja Brew" is a feeling. It's that instant connection you get when you walk in and want to come back, again and again.
               </p>
             </div>
           </div>
@@ -224,7 +224,7 @@ const About = () => {
       </section>
 
       {/* Newspaper Coverage Section - Manual Carousel */}
-      <section className="py-8 bg-gradient-to-b from-[#1A0F00] to-black">
+      <section className="py-8 bg-black">
         <div className="container mx-auto px-6 md:px-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-serif mb-6 text-white">In the News</h2>
@@ -341,7 +341,7 @@ const About = () => {
                   <p className="text-white/80">Events Catered</p>
                 </div>
                 <div className="bg-black/30 p-6 rounded-lg border border-white/10">
-                  <h4 className="text-2xl font-serif text-[#C8A27A] mb-2">5*</h4>
+                  <h4 className="text-2xl font-serif text-[#C8A27A] mb-2">5+</h4>
                   <p className="text-white/80">Elite Partners</p>
                 </div>
               </div>
@@ -353,8 +353,8 @@ const About = () => {
                 <source src="/mapanime.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center bg-black/50 backdrop-blur-sm px-6 py-3 rounded-lg">
                 <p className="text-white text-lg font-serif">Our Expanding Footprint</p>
                 <p className="text-white/80 text-sm">Across India and Beyond</p>
               </div>
