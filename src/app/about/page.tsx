@@ -224,7 +224,7 @@ const About = () => {
       </section>
 
       {/* Newspaper Coverage Section - Manual Carousel */}
-      <section className="py-8 bg-black">
+      <section className="py-8 bg-[#0F0800]">
         <div className="container mx-auto px-6 md:px-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-serif mb-6 text-white">In the News</h2>
@@ -400,7 +400,7 @@ const About = () => {
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
               <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image src="/brands/brands (3).png" alt="Anand Villas" fill className="object-cover" />
+                <Image src="/brands/brands (4).png" alt="Anand Villas" fill className="object-cover" />
               </div>
               <h3 className="text-2xl font-serif text-white mb-4">Anand Villas</h3>
               <p className="text-white/70 mb-4">A boutique hotel in West Delhi that blends charm with convenience, perfect for intimate gatherings and personalized hospitality experiences.</p>
@@ -409,7 +409,7 @@ const About = () => {
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
               <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image src="/brands/brands (4).png" alt="Sufiana" fill className="object-cover" />
+                <Image src="/brands/brands (3).png" alt="Sufiana" fill className="object-cover" />
               </div>
               <h3 className="text-2xl font-serif text-white mb-4">Sufiana</h3>
               <p className="text-white/70 mb-4">A culinary destination serving refined Indian cuisine in an ambience soaked in culture, promising a gastronomic journey in true sufiana andaaz.</p>
@@ -418,7 +418,7 @@ const About = () => {
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
               <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image src="/brands/brands (5).png" alt="Ala Chaat" fill className="object-cover" />
+                <Image src="/brands/brands.png" alt="Ala Chaat" fill className="object-cover" />
               </div>
               <h3 className="text-2xl font-serif text-white mb-4">Ala Chaat</h3>
               <p className="text-white/70 mb-4">Bringing authentic street flavours to curated occasions, redefining chaat catering for over five years with zest and nostalgia.</p>
@@ -427,7 +427,7 @@ const About = () => {
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center group">
               <div className="relative w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden">
-                <Image src="/brands/brands.png" alt="Deja Brew Taps" fill className="object-cover" />
+                <Image src="/brands/brands (5).png" alt="Deja Brew Taps" fill className="object-cover" />
               </div>
               <h3 className="text-2xl font-serif text-white mb-4">Deja Brew Taps</h3>
               <p className="text-white/70 mb-4">India's first portable craft beer bar, delivering freshly brewed luxury on wheels with 24/7 chilled pours and curated beer-tasting experiences.</p>
