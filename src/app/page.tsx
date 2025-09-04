@@ -45,7 +45,7 @@ export default function Home() {
     }
   }, [loading]);
 
-  // Beer counter animation with guaranteed execution
+  // Beer counter animation - triggers only when section comes into view
   useEffect(() => {
     // Function to start the counter animation
     const startCounterAnimation = () => {
@@ -75,38 +75,42 @@ export default function Home() {
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting) {
-          console.log("Counter in view - triggering animation");
+        if (entry.isIntersecting && !animationTriggered.current) {
+          console.log("Counter section in view - triggering animation");
           startCounterAnimation();
         }
       },
-      { threshold: 0.1, rootMargin: "100px" }
+      { 
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: "50px" // Add some margin to trigger slightly before element is fully visible
+      }
     );
 
-    // Set a fallback timer to ensure animation runs even if intersection detection fails
-    const fallbackTimer = setTimeout(() => {
-      if (!animationTriggered.current) {
-        console.log("Fallback timer triggering animation");
-        startCounterAnimation();
-      }
-    }, 3000); // 3 seconds after component mounts
-
-    // Attach observer after a delay to ensure DOM is ready
-    const observerTimer = setTimeout(() => {
+    // Attach observer after loading is complete and DOM is ready
+    const attachObserver = () => {
       if (counterRef.current) {
         observer.observe(counterRef.current);
         console.log("Observer attached to counter element");
       } else {
-        console.log("Counter element reference not found - will use fallback");
+        console.log("Counter element not found, retrying...");
+        // Retry after a short delay if element is not found
+        setTimeout(attachObserver, 100);
       }
-    }, 1000);
+    };
+
+    // Wait for loading to complete before attaching observer
+    if (!loading) {
+      const timer = setTimeout(attachObserver, 500); // Small delay to ensure DOM is ready
+      return () => {
+        clearTimeout(timer);
+        if (counterRef.current) observer.unobserve(counterRef.current);
+      };
+    }
 
     return () => {
-      clearTimeout(fallbackTimer);
-      clearTimeout(observerTimer);
       if (counterRef.current) observer.unobserve(counterRef.current);
     };
-  }, []);
+  }, [loading]); // Add loading as dependency
 
   // If loading, show the loader video
   if (loading) {
@@ -138,7 +142,7 @@ export default function Home() {
           alt="Restaurant background"
           fill
           priority
-          className="object-cover object-center object-[center_25%] brightness-50"
+          className="object-cover object-center object-[center_25%] brightness-35"
           sizes="100vw"
         />
       </div>
@@ -239,7 +243,7 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
                 className="relative flex flex-col gap-2 bg-gradient-to-r from-[#1A0F00]/80 to-[#2A1A00]/80 p-6 rounded-lg border border-[#C8A27A]/30 backdrop-blur-sm shadow-lg transform hover:scale-[1.02] transition-all duration-300"
               >
                 <div className="absolute top-0 right-0 w-20 h-20 opacity-10 rounded-full bg-[#C8A27A] blur-lg -translate-y-1/4 translate-x-1/4"></div>
-                <div className="flex items-start gap-6">
+                <div className="flex items-center gap-6 md:gap-8">
                   {/* Beer Glass Animation - Enhanced Design */}
                   <div className="relative w-20 h-28 md:w-24 md:h-32 flex items-center justify-center">
                     {/* Beer Mug Container with Shadow */}
@@ -338,8 +342,8 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
                   </div>
 
                   {/* Counter Text - Better aligned */}
-                  <div className="flex flex-col">
-                    <h3 className="text-[#C8A27A] text-xl font-medium mb-1">
+                  <div className="flex flex-col justify-center">
+                    <h3 className="text-[#C8A27A] text-xl md:text-2xl font-medium mb-2 md:mb-3">
                       Proudly Serving
                     </h3>
                     <div className="flex items-baseline gap-3">
@@ -350,7 +354,7 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
                         </span>
                       </span>
                     </div>
-                    <span className="text-xl md:text-2xl font-sans text-white/90 uppercase tracking-wider font-light">
+                    <span className="text-lg md:text-xl font-sans text-white/90 uppercase tracking-wider font-light mt-1">
                       Liters of Craft Beer Poured
                     </span>
                   </div>
@@ -394,7 +398,7 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
           {/* Left Image */}
           <div className="relative h-[400px] md:h-[700px] rounded-2xl overflow-hidden">
             <Image
-              src="/aboutbeer.jpg"
+              src="/aboutbeer.png"
               alt="Craft beer selection"
               fill
               className="object-cover"

@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Playfair_Display, Montserrat } from "next/font/google"
 import Navbar from "@/components/Navbar"
@@ -79,6 +79,18 @@ const About = () => {
   const goToSlide = (index: number) => {
     setCurrentNewsSlide(Math.min(index, newsArticles.length - 3))
   }
+
+  // Auto-advance carousel every 2 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentNewsSlide((prev) => {
+        const maxSlide = newsArticles.length - 3
+        return prev >= maxSlide ? 0 : prev + 1
+      })
+    }, 2000)
+
+    return () => clearInterval(interval)
+  }, [newsArticles.length])
  
   return (
     <div className={`min-h-screen bg-black text-white ${playfair.variable} ${montserrat.variable}`}>
@@ -121,11 +133,12 @@ const About = () => {
             {/* Right: Our Story */}
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-4xl md:text-6xl font-serif mb-8 text-white text-left">Our Story</h2>
-              <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed text-left">
+              <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed text-left mb-6">
                 The idea behind Deja Brew was simple — to create a space that flows with your day.
                 A place where you can start your morning with a soulful cup of coffee, move into easy conversations over craft beer, and unwind by evening with cocktails that speak your vibe.
                 Deja Brew is more than just a hybrid lounge — it's an all-day escape.
-
+              </p>
+              <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed text-left">
                 Our name says it all — "Deja Brew" is a feeling. It's that instant connection you get when you walk in and want to come back, again and again.
               </p>
             </div>
@@ -224,10 +237,10 @@ const About = () => {
       </section>
 
       {/* Newspaper Coverage Section - Manual Carousel */}
-      <section className="py-8 bg-[#0F0800]">
+      <section className="py-8 bg-[#0F0800] overflow-hidden">
         <div className="container mx-auto px-6 md:px-20">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-serif mb-6 text-white">In the News</h2>
+            <h2 className="text-4xl md:text-6xl font-serif mb-6 text-white animate-pulse">In the News</h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               Our journey has been recognized by leading publications across India and beyond.
             </p>
@@ -385,7 +398,7 @@ const About = () => {
                 <Image src="/brands/brands (1).png" alt="Cherish" fill className="object-cover" />
               </div>
               <h3 className="text-2xl font-serif text-white mb-4">Cherish</h3>
-              <p className="text-white/70 mb-4">With 25 years of legacy, Cherish is a name synonymous with premium ballroom experiences. Specializing in grand weddings and bespoke celebrations.</p>
+              <p className="text-white/70 mb-4">With 25 years of legacy, Cherish is a premium ballroom experience, specialising in grand weddings & bespoke celebration.</p>
               <p className="text-[#C8A27A] text-sm italic">25 Years of Excellence</p>
             </div>
 
@@ -432,6 +445,51 @@ const About = () => {
               <h3 className="text-2xl font-serif text-white mb-4">Deja Brew Taps</h3>
               <p className="text-white/70 mb-4">India's first portable craft beer bar, delivering freshly brewed luxury on wheels with 24/7 chilled pours and curated beer-tasting experiences.</p>
               <p className="text-[#C8A27A] text-sm italic">Luxury on Wheels</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hours Section */}
+      <section className="py-16 bg-gradient-to-b from-black to-[#1A0F00]">
+        <div className="container mx-auto px-6 md:px-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-serif mb-6 text-[#C8A27A]">Opening Hours</h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              We're here to serve you every day of the week with our premium experience.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
+                <h3 className="text-xl font-serif text-white mb-2">Monday</h3>
+                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
+                <h3 className="text-xl font-serif text-white mb-2">Tuesday</h3>
+                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
+                <h3 className="text-xl font-serif text-white mb-2">Wednesday</h3>
+                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
+                <h3 className="text-xl font-serif text-white mb-2">Thursday</h3>
+                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
+                <h3 className="text-xl font-serif text-white mb-2">Friday</h3>
+                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
+                <h3 className="text-xl font-serif text-white mb-2">Saturday</h3>
+                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center md:col-start-2 lg:col-start-3">
+                <h3 className="text-xl font-serif text-white mb-2">Sunday</h3>
+                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
+              </div>
             </div>
           </div>
         </div>

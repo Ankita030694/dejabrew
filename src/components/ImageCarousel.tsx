@@ -21,11 +21,12 @@ export default function ImageCarousel({ images, altTexts }: ImageCarouselProps) 
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 4000); // Change image every 4 seconds
+      const nextIndex = (currentIndex + 1) % images.length;
+      scrollToIndex(nextIndex);
+    }, 2000); // Change image every 2 seconds
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, images.length]);
+  }, [isAutoPlaying, images.length, currentIndex]);
 
   const scrollToIndex = (index: number) => {
     if (carouselRef.current) {
