@@ -26,10 +26,12 @@ export default function Home() {
   const counterRef = useRef(null);
   const animationTriggered = useRef(false);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Handle loading state
+  // Handle mounting and loading state
   useEffect(() => {
+    setMounted(true);
     // Set a timeout to ensure minimum loading time for visual appeal
     const timer = setTimeout(() => {
       setLoading(false);
@@ -111,6 +113,15 @@ export default function Home() {
       if (counterRef.current) observer.unobserve(counterRef.current);
     };
   }, [loading]); // Add loading as dependency
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return (
+      <div className="fixed inset-0 w-full h-full bg-black flex items-center justify-center z-50">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   // If loading, show the loader video
   if (loading) {

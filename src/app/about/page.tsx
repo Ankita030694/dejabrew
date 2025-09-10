@@ -21,6 +21,7 @@ const montserrat = Montserrat({
 const About = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false)
   const [currentNewsSlide, setCurrentNewsSlide] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   // News articles data
   const newsArticles = [
@@ -80,8 +81,15 @@ const About = () => {
     setCurrentNewsSlide(Math.min(index, newsArticles.length - 3))
   }
 
+  // Handle mounting
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   // Auto-advance carousel every 2 seconds
   useEffect(() => {
+    if (!mounted) return
+    
     const interval = setInterval(() => {
       setCurrentNewsSlide((prev) => {
         const maxSlide = newsArticles.length - 3
@@ -90,8 +98,17 @@ const About = () => {
     }, 2000)
 
     return () => clearInterval(interval)
-  }, [newsArticles.length])
+  }, [newsArticles.length, mounted])
  
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    )
+  }
+
   return (
     <div className={`min-h-screen bg-black text-white ${playfair.variable} ${montserrat.variable}`}>
       <Navbar onBookingOpen={() => setIsBookingOpen(true)} />
@@ -99,7 +116,7 @@ const About = () => {
       {/* Hero Section with Full Picture */}
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <video src="/aboutvid.mp4" autoPlay loop muted playsInline className="object-cover" />
+          <video src="/aboutbgvid.mp4" autoPlay loop muted playsInline className="object-cover" />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <div className="relative z-10 flex items-center justify-center h-full">
@@ -460,36 +477,10 @@ const About = () => {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <h3 className="text-xl font-serif text-white mb-2">Monday</h3>
-                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <h3 className="text-xl font-serif text-white mb-2">Tuesday</h3>
-                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <h3 className="text-xl font-serif text-white mb-2">Wednesday</h3>
-                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <h3 className="text-xl font-serif text-white mb-2">Thursday</h3>
-                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <h3 className="text-xl font-serif text-white mb-2">Friday</h3>
-                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-                <h3 className="text-xl font-serif text-white mb-2">Saturday</h3>
-                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center md:col-start-2 lg:col-start-3">
-                <h3 className="text-xl font-serif text-white mb-2">Sunday</h3>
-                <p className="text-[#C8A27A] text-lg">12 Noon - 1 AM</p>
-              </div>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
+              <h3 className="text-2xl font-serif text-white mb-4">Monday - Sunday</h3>
+              <p className="text-[#C8A27A] text-2xl font-medium">12 Noon - 1 AM</p>
             </div>
           </div>
         </div>
