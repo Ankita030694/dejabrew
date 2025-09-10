@@ -192,8 +192,8 @@ export default function ReservationData() {
                 placeholder="Search by name, email, phone, occasion..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="block w-full pl-10 pr-3 py-2 border rounded-md leading-5 bg-transparent placeholder-white/50 text-white focus:outline-none focus:placeholder-white/70 focus:ring-1 focus:ring-2"
-                style={{ borderColor: 'var(--dejabrew-gold)', focusRingColor: 'var(--dejabrew-gold)' }}
+              className="block w-full pl-10 pr-3 py-2 border rounded-md leading-5 bg-transparent placeholder-white/50 text-white focus:outline-none focus:placeholder-white/70 focus:ring-1 focus:ring-2"
+              style={{ borderColor: 'var(--dejabrew-gold)' }}
               />
             </div>
             <div>
@@ -202,7 +202,7 @@ export default function ReservationData() {
                 value={dateFilter}
                 onChange={(e) => setDateFilter(e.target.value)}
                 className="block w-full px-3 py-2 border rounded-md leading-5 bg-transparent text-white focus:outline-none focus:ring-1 focus:ring-2"
-                style={{ borderColor: 'var(--dejabrew-gold)', focusRingColor: 'var(--dejabrew-gold)' }}
+                style={{ borderColor: 'var(--dejabrew-gold)' }}
               />
             </div>
           </div>

@@ -158,7 +158,7 @@ export default function ContactUsData() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="block w-full pl-10 pr-3 py-2 border rounded-md leading-5 bg-transparent placeholder-white/50 text-white focus:outline-none focus:placeholder-white/70 focus:ring-1 focus:ring-2"
-              style={{ borderColor: 'var(--dejabrew-gold)', focusRingColor: 'var(--dejabrew-gold)' }}
+              style={{ borderColor: 'var(--dejabrew-gold)' }}
             />
           </div>
         </div>
