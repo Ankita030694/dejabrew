@@ -3,6 +3,31 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Global Color Palette */
+  --primary-green: #22c55e; /* 70% - Main green */
+  --primary-yellow: #eab308; /* 15% - Main yellow */
+  --light-green: #86efac; /* 5% - Light green */
+  --light-yellow: #fde047; /* 5% - Light yellow */
+  --neutral-50: #f9fafb;
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
+  
+  /* DejaBrew Theme Colors */
+  --dejabrew-dark: #1A0F00; /* Main dark brown background */
+  --dejabrew-gold: #C8A27A; /* Golden brown accent */
+  --dejabrew-black: #000000; /* Pure black */
+  --dejabrew-white: #ffffff; /* Pure white */
+  --dejabrew-dark-light: #2A1A00; /* Lighter dark brown */
+  --dejabrew-gold-light: #D4B896; /* Lighter golden brown */
+  --dejabrew-gold-dark: #B8935A; /* Darker golden brown */
 }
 
 @theme inline {
