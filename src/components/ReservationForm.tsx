@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { Playfair_Display, Montserrat } from "next/font/google";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 
 // Font setup to match page.tsx
 const playfair = Playfair_Display({
@@ -272,12 +274,13 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose }) => {
         timeSlot: formData.timeSlot,
         date: formData.date,
         timing: formData.timing,
-        createdAt: Date.now(),
+        createdAt: new Date(),
         countryCode: formData.countryCode,
       };
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Save to Firebase 'form' collection
+      const formCollection = collection(db, "form");
+      await addDoc(formCollection, reservation);
       
       alert("Reservation submitted successfully! We'll contact you soon.");
       onClose();
@@ -295,6 +298,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose }) => {
       });
       setShowTimeSlots(false);
     } catch (error) {
+      console.error("Error saving reservation:", error);
       alert("An error occurred while submitting your reservation. Please try again.");
     }
     setLoading(false);
