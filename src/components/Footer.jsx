@@ -69,6 +69,7 @@ const Footer = () => {
                   </button>
                 </li>
                 <li><Link href="/contact" className="text-white/70 hover:text-[#C8A27A] transition">Contact</Link></li>
+                <li><Link href="/privacy-policy" className="text-white/70 hover:text-[#C8A27A] transition">Privacy Policy</Link></li>
               </ul>
             </div>
             
