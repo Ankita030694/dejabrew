@@ -52,7 +52,7 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
                 </svg>
               </button>
 
-              <div className="h-17 flex items-center">
+              <Link href="/" className="h-17 flex items-center">
                 <Image 
                   src="/logo9.svg" 
                   alt="Deja Brew Logo" 
@@ -60,11 +60,11 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
                   height={67}
                   className="w-auto h-full"
                 />
-              </div>
+              </Link>
               <div className="w-8"></div>
             </div>
 
-            <div className="hidden md:block h-22">
+            <Link href="/" className="hidden md:block h-22">
               <Image 
                 src="/logo9.svg" 
                 alt="Deja Brew Logo" 
@@ -72,7 +72,7 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
                 height={90}
                 className="w-auto h-full"
               />
-            </div>
+            </Link>
 
             <Link
               href="/reservation"
@@ -127,6 +127,7 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
         </div>
 
         <div className="flex flex-col items-center justify-start pt-10 gap-8">
+          <Link href="/" className="text-2xl font-sans text-white" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
           <a href="/about" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>About us</a>
           
           {/* Mobile Menu Dropdown */}

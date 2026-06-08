@@ -23,7 +23,7 @@ const Footer = () => {
                 />
               </div>
               <p className="text-white/70 font-sans mb-6">
-              At Deja Brew, every visit is a fresh experience. Whether you're here to work, unwind, or connect, we've created a space that feels familiar yet refreshingly unexpected — never quite déjà vu.
+              At Deja Brew, every visit is a fresh experience. Whether you're here to work, unwind, or connect, we've created a space that feels familiar yet refreshingly unexpected - never quite déjà vu.
               </p>
               <ul className="space-y-3 font-sans text-white/70 mb-6">
                 <li>M-20, Block M , Greater Kailash-2 , Delhi - 110048</li>
@@ -53,14 +53,23 @@ const Footer = () => {
               <h4 className="text-xl font-serif mb-6">Links</h4>
               <ul className="space-y-3 font-sans">
                 <li><Link href="/" className="text-white/70 hover:text-[#C8A27A] transition">Home</Link></li>
-                <li><Link href="/about" className="text-white/70 hover:text-[#C8A27A] transition">About</Link></li>
-                <li><Link href="/menu" className="text-white/70 hover:text-[#C8A27A] transition">Menu</Link></li>
+                <li><Link href="/about" className="text-white/70 hover:text-[#C8A27A] transition">About Us</Link></li>
+                <li>
+                  <a href="/foodandbar.pdf" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-[#C8A27A] transition">
+                    Food & Bar
+                  </a>
+                </li>
+                <li>
+                  <a href="/summer_cocktails.pdf" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-[#C8A27A] transition">
+                    Summer Cocktails
+                  </a>
+                </li>
                 <li>
                   <Link href="/reservation" className="text-white/70 hover:text-[#C8A27A] transition">
                     Reservations
                   </Link>
                 </li>
-                <li><Link href="/contact" className="text-white/70 hover:text-[#C8A27A] transition">Contact</Link></li>
+                <li><Link href="/contact" className="text-white/70 hover:text-[#C8A27A] transition">Contact Us</Link></li>
                 <li><Link href="/privacy-policy" className="text-white/70 hover:text-[#C8A27A] transition">Privacy Policy</Link></li>
               </ul>
             </div>
@@ -69,9 +78,8 @@ const Footer = () => {
             <div className="col-span-1 md:col-span-2">
               <h4 className="text-xl font-serif mb-6">Hours</h4>
               <ul className="space-y-3 font-sans text-white/70">
-                <li className="flex justify-between">
-                  <span>Monday - Sunday</span>
-                  <span>12 Noon - 1 AM</span>
+                <li>
+                  Monday - Sunday: 12 Noon - 1 AM
                 </li>
               </ul>
             </div>

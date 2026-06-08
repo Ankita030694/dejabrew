@@ -180,12 +180,12 @@ const About = () => {
             <div className="w-full md:w-1/2 flex flex-col justify-center">
               <h2 className="text-4xl md:text-6xl font-serif mb-8 text-white text-left">Our Story</h2>
               <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed text-left mb-6">
-                The idea behind Deja Brew was simple — to create a space that flows with your day.
+                The idea behind Deja Brew was simple - to create a space that flows with your day.
                 A place where you can start your morning with a soulful cup of coffee, move into easy conversations over craft beer, and unwind by evening with cocktails that speak your vibe.
-                Deja Brew is more than just a hybrid lounge — it's an all-day escape.
+                Deja Brew is more than just a hybrid lounge - it's an all-day escape.
               </p>
               <p className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed text-left">
-                Our name says it all — "Deja Brew" is a feeling. It's that instant connection you get when you walk in and want to come back, again and again.
+                Our name says it all - "Deja Brew" is a feeling. It's that instant connection you get when you walk in and want to come back, again and again.
               </p>
             </div>
           </div>
@@ -237,7 +237,7 @@ const About = () => {
               <h3 className="text-2xl font-serif text-white mb-2">Gunjan Chadha</h3>
               <p className="text-[#C8A27A] text-lg italic">Financial Backbone</p>
               <p className="text-white/70 mt-4 text-sm">
-                The perfect blend of beauty and brains — Gunjan is the financial backbone of our business. Ensures we
+                The perfect blend of beauty and brains - Gunjan is the financial backbone of our business. Ensures we
                 stay sharp, scalable, and financially strong.
               </p>
             </div>

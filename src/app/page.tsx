@@ -432,7 +432,7 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
                     Hefeweizen (Wheat Beer – German Style)
                   </h3>
                   <p className="text-lg leading-relaxed">
-                    A smooth, unfiltered wheat beer with notes of banana and clove. Light-bodied, refreshing, and slightly fruity — a classic from Bavaria.
+                    A smooth, unfiltered wheat beer with notes of banana and clove. Light-bodied, refreshing, and slightly fruity - a classic from Bavaria.
                   </p>
                 </div>
 
@@ -441,7 +441,7 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
                     Stout (Dark Ale – English Style)
                   </h3>
                   <p className="text-lg leading-relaxed">
-                    Rich, roasted, and full-bodied with hints of coffee, dark chocolate. A creamy finish with low bitterness — the perfect slow sipper.
+                    Rich, roasted, and full-bodied with hints of coffee, dark chocolate. A creamy finish with low bitterness - the perfect slow sipper.
                   </p>
                 </div>
 
@@ -459,7 +459,7 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
                     India Pale Ale – West Coast Style
                   </h3>
                   <p className="text-lg leading-relaxed">
-                    Bold and bitter with sharp citrus and piney hop notes. Dry finish and medium body — a classic IPA with a crisp punch.
+                    Bold and bitter with sharp citrus and piney hop notes. Dry finish and medium body - a classic IPA with a crisp punch.
                   </p>
                 </div>
 
