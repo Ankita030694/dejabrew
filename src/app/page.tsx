@@ -35,7 +35,7 @@ export default function Home() {
     // Set a timeout to ensure minimum loading time for visual appeal
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 5000); // Adjust time as needed
+    }, 1000); // Adjust time as needed
 
     return () => clearTimeout(timer);
   }, []);
