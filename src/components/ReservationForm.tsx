@@ -323,6 +323,48 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose, isInline = f
     }
   };
 
+  // Check if a time slot has already passed for the selected date
+  const isTimeSlotPassed = (dateStr: string, timeSlotStr: string): boolean => {
+    const todayStr = new Date().toISOString().split("T")[0];
+    
+    // Future dates are never passed
+    if (dateStr > todayStr) {
+      return false;
+    }
+    // Past dates are always passed
+    if (dateStr < todayStr) {
+      return true;
+    }
+    
+    const now = new Date();
+    
+    // Parse the slot time
+    const [hourMinute, period] = timeSlotStr.split(" ");
+    let [hour, minute] = hourMinute.split(":").map(Number);
+    
+    if (period === "PM" && hour !== 12) {
+      hour += 12;
+    } else if (period === "AM" && hour === 12) {
+      hour = 0;
+    }
+    
+    // Logical hours since 6 AM (business day logic)
+    let slotHour = hour;
+    if (slotHour < 6) {
+      slotHour += 24;
+    }
+    const slotMinutes = slotHour * 60 + minute;
+    
+    let currentHour = now.getHours();
+    let currentMin = now.getMinutes();
+    if (currentHour < 6) {
+      currentHour += 24;
+    }
+    const currentMinutes = currentHour * 60 + currentMin;
+    
+    return currentMinutes >= slotMinutes;
+  };
+
   // Determine if we should disable the lunch button (for March 14th)
   const isLunchDisabled = isMarch14th(formData.date);
 
@@ -564,20 +606,26 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose, isInline = f
               <div className="space-y-4">
                 <label className="text-white/90 text-sm font-medium font-sans">Choose Time Slot</label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {timeSlots.map((slot, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      onClick={() => handleInputChange("timeSlot", slot)}
-                      className={`py-3 px-4 rounded-lg transition-all duration-200 font-medium ${
-                        formData.timeSlot === slot
-                          ? "bg-[#C8A27A] text-black font-semibold"
-                          : "bg-white/10 text-white hover:bg-white/20 border border-white/20"
-                      }`}
-                    >
-                      {slot}
-                    </button>
-                  ))}
+                  {timeSlots.map((slot, index) => {
+                    const passed = isTimeSlotPassed(formData.date, slot);
+                    return (
+                      <button
+                        key={index}
+                        type="button"
+                        disabled={passed}
+                        onClick={() => handleInputChange("timeSlot", slot)}
+                        className={`py-3 px-4 rounded-lg transition-all duration-200 font-medium ${
+                          formData.timeSlot === slot
+                            ? "bg-[#C8A27A] text-black font-semibold"
+                            : passed
+                            ? "bg-white/5 text-white/30 cursor-not-allowed border border-white/5 opacity-40"
+                            : "bg-white/10 text-white hover:bg-white/20 border border-white/20"
+                        }`}
+                      >
+                        {slot}
+                      </button>
+                    );
+                  })}
                 </div>
                 {errors.timeSlot && (
                   <p className="text-red-400 text-sm">{errors.timeSlot}</p>
