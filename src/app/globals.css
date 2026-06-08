@@ -60,6 +60,21 @@ body {
   display: none;  /* Chrome, Safari and Opera */
 }
 
+/* Responsive Image Carousel Items */
+.carousel-item {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .carousel-item {
+    width: calc(25% - 18px);
+    min-width: calc(25% - 18px);
+    max-width: calc(25% - 18px);
+  }
+}
+
 /* Beer bubble animations */
 @keyframes bubble1 {
   0% { transform: translateY(0); opacity: 0; }

@@ -186,8 +186,7 @@ const ContactUs = () => {
                 <div>
                   <h3 className="text-xl text-[#C8A27A] mb-2">Opening Hours</h3>
                   <p className="text-white/80 font-sans">
-                    Monday - Thursday: 12:00 PM - 12:00 AM<br/>
-                    Friday - Sunday: 12:00 PM - 1:00 AM
+                    Monday - Sunday: 12 Noon to 1 AM
                   </p>
                 </div>
                 <div>

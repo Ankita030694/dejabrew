@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface NavbarProps {
@@ -9,6 +9,13 @@ interface NavbarProps {
 
 export default function Navbar({ onBookingOpen }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuDropdownOpen, setIsMobileMenuDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      setIsMobileMenuDropdownOpen(false);
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -77,9 +84,26 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
           {/* Bottom Row: Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
             <a href="/" className="text-white/80 hover:text-white">HOME</a>
-            <a href="about" className="text-white/80 hover:text-white">ABOUT US</a>
-            <a href="/dejamenu.pdf" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white">MENU</a>
-            <a href="contact" className="text-white/80 hover:text-white">CONTACT US</a>
+            <a href="/about" className="text-white/80 hover:text-white">ABOUT US</a>
+            <div className="relative group">
+              <button className="text-white/80 group-hover:text-white flex items-center gap-1 cursor-pointer uppercase font-sans text-sm">
+                MENU
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </button>
+              <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 rounded-md bg-[#1A0F00] border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-2">
+                  <a href="/foodandbar.pdf" target="_blank" rel="noopener noreferrer" className="block px-4 py-2.5 text-sm text-white/80 hover:text-white hover:bg-white/5 transition font-sans">
+                    Food & Bar
+                  </a>
+                  <a href="/summer_cocktails.pdf" target="_blank" rel="noopener noreferrer" className="block px-4 py-2.5 text-sm text-white/80 hover:text-white hover:bg-white/5 transition font-sans">
+                    Summer Cocktails
+                  </a>
+                </div>
+              </div>
+            </div>
+            <a href="/contact" className="text-white/80 hover:text-white">CONTACT US</a>
           </div>
         </div>
       </nav>
@@ -102,10 +126,31 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
         </div>
 
         <div className="flex flex-col items-center justify-start pt-10 gap-8">
-          <a href="#about" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>About us</a>
-          <a href="/dejamenu.pdf" target="_blank" rel="noopener noreferrer" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Menu</a>
+          <a href="/about" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>About us</a>
+          
+          {/* Mobile Menu Dropdown */}
+          <div className="w-full flex flex-col items-center">
+            <button 
+              onClick={() => setIsMobileMenuDropdownOpen(!isMobileMenuDropdownOpen)}
+              className="text-2xl font-sans flex items-center gap-2 text-white"
+            >
+              Menu
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={`w-5 h-5 transition-transform duration-200 ${isMobileMenuDropdownOpen ? 'rotate-180' : ''}`}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div className={`w-full flex flex-col items-center gap-4 overflow-hidden transition-all duration-300 ${isMobileMenuDropdownOpen ? 'max-h-40 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+              <a href="/foodandbar.pdf" target="_blank" rel="noopener noreferrer" className="text-xl text-white/70 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>
+                Food & Bar
+              </a>
+              <a href="/summer_cocktails.pdf" target="_blank" rel="noopener noreferrer" className="text-xl text-white/70 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>
+                Summer Cocktails
+              </a>
+            </div>
+          </div>
+
           <a href="#book" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Book a table</a>
-          <a href="#contact" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Contact us</a>
+          <a href="/contact" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Contact us</a>
           
           <button
             onClick={() => {

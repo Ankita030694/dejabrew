@@ -156,7 +156,7 @@ export default function PrivacyPolicy() {
                 <li>Withdraw consent for communication</li>
               </ul>
               <p className="text-white/80 font-sans mt-4 leading-relaxed">
-                For any such requests, please contact us using the details provided on our Contact page or directly at <a href="mailto:dejabrewmail@gmail.com" className="text-[#C8A27A] hover:underline">dejabrewmail@gmail.com</a>.
+                For any such requests, please contact us using the details below.
               </p>
             </div>
 

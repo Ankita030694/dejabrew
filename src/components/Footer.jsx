@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { useState } from 'react';
 import ReservationForm from './ReservationForm';
 
@@ -47,9 +47,6 @@ const Footer = () => {
                 <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition">
                   <FaInstagram className="text-white" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition">
-                  <FaTwitter className="text-white" />
-                </a>
               </div>
             </div>
 
@@ -79,7 +76,7 @@ const Footer = () => {
               <ul className="space-y-3 font-sans text-white/70">
                 <li className="flex justify-between">
                   <span>Monday - Sunday</span>
-                  <span>12PM - 1AM</span>
+                  <span>12 Noon - 1 AM</span>
                 </li>
               </ul>
             </div>

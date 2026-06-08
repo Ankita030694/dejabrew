@@ -146,15 +146,15 @@ export default function Home() {
     <div
       className={`min-h-screen bg-black text-white ${playfair.variable} ${montserrat.variable}`}
     >
-      {/* Background Image Container */}
-      <div className="absolute top-0 left-0 w-full h-screen z-0">
-        <Image
-          src="/homebanner.jpg"
-          alt="Restaurant background"
-          fill
-          priority
-          className="object-cover object-center object-[center_25%] brightness-35"
-          sizes="100vw"
+      {/* Background Video Container */}
+      <div className="absolute top-0 left-0 w-full h-screen z-0 overflow-hidden">
+        <video
+          src="/aboutbgvid.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="object-cover w-full h-full brightness-35"
         />
       </div>
 
@@ -478,7 +478,7 @@ Our name says it all- “Deja Brew” is a feeling. It’s that instant connecti
       </section>
 
       {/* Wholesome Experience Section */}
-      <section className="min-h-screen bg-[#1A0F00] px-6 md:px-20 py-16 md:py-8">
+      <section className="bg-[#1A0F00] px-6 md:px-20 py-16 md:py-8">
         <h2 className="text-5xl md:text-8xl font-serif text-center italic text-white mb-10 md:mb-20">
           A Wholesome Experience
         </h2>

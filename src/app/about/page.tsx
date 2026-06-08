@@ -21,6 +21,7 @@ const montserrat = Montserrat({
 const About = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false)
   const [currentNewsSlide, setCurrentNewsSlide] = useState(0)
+  const [visibleCards, setVisibleCards] = useState(3)
   const [mounted, setMounted] = useState(false)
 
   // News articles data
@@ -70,7 +71,7 @@ const About = () => {
   ]
 
   const nextSlide = () => {
-    setCurrentNewsSlide((prev) => Math.min(prev + 1, newsArticles.length - 3))
+    setCurrentNewsSlide((prev) => Math.min(prev + 1, newsArticles.length - visibleCards))
   }
 
   const prevSlide = () => {
@@ -78,13 +79,34 @@ const About = () => {
   }
 
   const goToSlide = (index: number) => {
-    setCurrentNewsSlide(Math.min(index, newsArticles.length - 3))
+    setCurrentNewsSlide(Math.min(index, newsArticles.length - visibleCards))
   }
 
-  // Handle mounting
+  // Handle mounting and screen resizing
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    if (!mounted) return
+
+    const handleResize = () => {
+      let cards = 3
+      if (window.innerWidth < 768) {
+        cards = 1
+      } else if (window.innerWidth < 1024) {
+        cards = 2
+      } else {
+        cards = 3
+      }
+      setVisibleCards(cards)
+      setCurrentNewsSlide((prev) => Math.min(prev, newsArticles.length - cards))
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [mounted, newsArticles.length])
 
   // Auto-advance carousel every 2 seconds
   useEffect(() => {
@@ -92,13 +114,13 @@ const About = () => {
     
     const interval = setInterval(() => {
       setCurrentNewsSlide((prev) => {
-        const maxSlide = newsArticles.length - 3
+        const maxSlide = newsArticles.length - visibleCards
         return prev >= maxSlide ? 0 : prev + 1
       })
     }, 2000)
 
     return () => clearInterval(interval)
-  }, [newsArticles.length, mounted])
+  }, [newsArticles.length, mounted, visibleCards])
  
   // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
@@ -116,7 +138,14 @@ const About = () => {
       {/* Hero Section with Full Picture */}
       <section className="relative h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <video src="/aboutbgvid.mp4" autoPlay loop muted playsInline className="object-cover" />
+          <Image
+            src="/homebanner.jpg"
+            alt="About us background"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <div className="relative z-10 flex items-center justify-center h-full">
@@ -263,13 +292,16 @@ const About = () => {
             </p>
           </div>
 
-          {/* Manual Carousel - 3 Cards Visible */}
-          <div className="relative max-w-7xl mx-auto">
+          {/* Manual Carousel */}
+          <div className="relative max-w-7xl mx-auto px-4 md:px-12">
             {/* Main Carousel Container */}
             <div className="relative overflow-hidden rounded-2xl">
-              <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentNewsSlide * (100/3)}%)` }}>
+              <div 
+                className="flex transition-transform duration-500 ease-in-out" 
+                style={{ transform: `translateX(-${currentNewsSlide * (100 / visibleCards)}%)` }}
+              >
                 {newsArticles.map((article, index) => (
-                  <div key={article.id} className="flex-shrink-0 w-1/3 px-2">
+                  <div key={article.id} className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-2">
                     <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 group h-full">
                       <div className="relative h-48 overflow-hidden">
                         <Image
@@ -298,36 +330,46 @@ const About = () => {
             <button
               onClick={prevSlide}
               disabled={currentNewsSlide === 0}
-              className={`absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full transition-all duration-300 backdrop-blur-sm border ${
+              className={`absolute left-0 md:left-2 top-1/2 transform -translate-y-1/2 p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm border ${
                 currentNewsSlide === 0
                   ? 'bg-black/30 text-white/30 border-white/10 cursor-not-allowed'
                   : 'bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-[#C8A27A]/50'
               }`}
               aria-label="Previous article"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 md:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
 
             <button
               onClick={nextSlide}
-              disabled={currentNewsSlide >= newsArticles.length - 3}
-              className={`absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full transition-all duration-300 backdrop-blur-sm border ${
-                currentNewsSlide >= newsArticles.length - 3
+              disabled={currentNewsSlide >= newsArticles.length - visibleCards}
+              className={`absolute right-0 md:right-2 top-1/2 transform -translate-y-1/2 p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm border ${
+                currentNewsSlide >= newsArticles.length - visibleCards
                   ? 'bg-black/30 text-white/30 border-white/10 cursor-not-allowed'
                   : 'bg-black/50 hover:bg-black/70 text-white border-white/20 hover:border-[#C8A27A]/50'
               }`}
               aria-label="Next article"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 md:w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
 
-           
-
-           
+            {/* Pagination Dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {Array.from({ length: newsArticles.length - visibleCards + 1 }).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    currentNewsSlide === idx ? 'bg-[#C8A27A] w-6' : 'bg-white/20 hover:bg-white/40'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -478,9 +520,10 @@ const About = () => {
           </div>
 
           <div className="max-w-2xl mx-auto">
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
-              <h3 className="text-2xl font-serif text-white mb-4">Monday - Sunday</h3>
-              <p className="text-[#C8A27A] text-2xl font-medium">12 Noon - 1 AM</p>
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 hover:border-[#C8A27A]/30 transition-all duration-300 text-center">
+              <p className="text-xl md:text-2xl font-serif text-white">
+                Monday - Sunday: <span className="text-[#C8A27A] font-sans font-medium ml-2">12 Noon to 1 AM</span>
+              </p>
             </div>
           </div>
         </div>
