@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface NavbarProps {
-  onBookingOpen: () => void;
+  onBookingOpen?: () => void;
 }
 
 export default function Navbar({ onBookingOpen }: NavbarProps) {
@@ -73,12 +74,12 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
               />
             </div>
 
-            <button
-              onClick={onBookingOpen}
-              className="hidden md:block border border-white/20 text-white px-6 py-2 rounded hover:bg-white/10 transition"
+            <Link
+              href="/reservation"
+              className="hidden md:block border border-white/20 text-white px-6 py-2 rounded hover:bg-white/10 transition text-sm font-sans font-medium uppercase text-center"
             >
               BOOK A TABLE
-            </button>
+            </Link>
           </div>
 
           {/* Bottom Row: Navigation Links */}
@@ -149,18 +150,16 @@ export default function Navbar({ onBookingOpen }: NavbarProps) {
             </div>
           </div>
 
-          <a href="#book" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Book a table</a>
+          <Link href="/reservation" className="text-2xl font-sans text-white" onClick={() => setIsMobileMenuOpen(false)}>Book a table</Link>
           <a href="/contact" className="text-2xl font-sans" onClick={() => setIsMobileMenuOpen(false)}>Contact us</a>
           
-          <button
-            onClick={() => {
-              onBookingOpen();
-              setIsMobileMenuOpen(false);
-            }}
-            className="mt-8 w-[80%] bg-[#6F4E37] text-white px-6 py-4 rounded-md text-xl font-sans font-medium hover:bg-[#8B5E3C] transition"
+          <Link
+            href="/reservation"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="mt-8 w-[80%] bg-[#6F4E37] text-white px-6 py-4 rounded-md text-xl font-sans font-medium hover:bg-[#8B5E3C] transition text-center"
           >
             BOOK A TABLE
-          </button>
+          </Link>
         </div>
       </div>
 

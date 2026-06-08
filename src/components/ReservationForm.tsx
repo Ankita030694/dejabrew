@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import { useRouter } from "next/navigation";
 
 // Font setup to match page.tsx
 const playfair = Playfair_Display({
@@ -50,6 +51,7 @@ interface ReservationFormProps {
 }
 
 const ReservationForm: React.FC<ReservationFormProps> = ({ onClose, isInline = false }) => {
+  const router = useRouter();
   const [outlets, setOutlets] = useState<Outlet[]>([
     {
       id: "1",
@@ -283,9 +285,6 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose, isInline = f
       const formCollection = collection(db, "form");
       await addDoc(formCollection, reservation);
       
-      alert("Reservation submitted successfully! We'll contact you soon.");
-      if (onClose) onClose();
-
       // Reset form fields
       setFormData({
         name: "",
@@ -298,6 +297,10 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose, isInline = f
         countryCode: "+91 (India)",
       });
       setShowTimeSlots(false);
+      if (onClose) onClose();
+
+      // Redirect to /thank-you page
+      router.push('/thank-you');
     } catch (error) {
       console.error("Error saving reservation:", error);
       alert("An error occurred while submitting your reservation. Please try again.");

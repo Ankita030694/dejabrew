@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -94,6 +95,7 @@ const ClientOnlySplashEffects = () => {
 };
 
 const ContactUs = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -131,9 +133,8 @@ const ContactUs = () => {
         notes: ''
       });
       
-      // Show thank you message
-      setShowThankYou(true);
-      setTimeout(() => setShowThankYou(false), 5000); // Hide after 5 seconds
+      // Redirect to /thank-you page
+      router.push('/thank-you');
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('There was an error submitting your form. Please try again.');
