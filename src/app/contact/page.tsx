@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import ReservationForm from '@/components/ReservationForm';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/firebase/firebase';
@@ -156,7 +157,7 @@ const ContactUs = () => {
         />
       </div>
 
-      <div className="relative z-10 min-h-screen py-32 px-6 sm:px-8 lg:px-12" style={{marginTop: '100px'}}>
+      <div className="relative z-10 min-h-screen pt-56 pb-32 px-6 sm:px-8 lg:px-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Left Section */}
           <motion.div
@@ -287,6 +288,8 @@ const ContactUs = () => {
       </div>
       {/* Booking Form Modal */}
       {isBookingOpen && <ReservationForm onClose={() => setIsBookingOpen(false)} />}
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

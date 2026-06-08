@@ -45,10 +45,11 @@ interface FormErrors {
 }
 
 interface ReservationFormProps {
-  onClose: () => void;
+  onClose?: () => void;
+  isInline?: boolean;
 }
 
-const ReservationForm: React.FC<ReservationFormProps> = ({ onClose }) => {
+const ReservationForm: React.FC<ReservationFormProps> = ({ onClose, isInline = false }) => {
   const [outlets, setOutlets] = useState<Outlet[]>([
     {
       id: "1",
@@ -283,7 +284,7 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose }) => {
       await addDoc(formCollection, reservation);
       
       alert("Reservation submitted successfully! We'll contact you soon.");
-      onClose();
+      if (onClose) onClose();
 
       // Reset form fields
       setFormData({
@@ -322,23 +323,19 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose }) => {
   // Determine if we should disable the lunch button (for March 14th)
   const isLunchDisabled = isMarch14th(formData.date);
 
-  return (
-    <div className={`fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 ${playfair.variable} ${montserrat.variable}`} style={{
-      backgroundImage: 'url(/reservation.png)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}>
-      <div className="relative bg-gradient-to-br from-[#1A0F00]/80 to-black/80 border border-[#C8A27A]/30 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto backdrop-blur-sm">
-        {/* Close Button */}
+  const formContent = (
+    <div className={`relative bg-gradient-to-br from-[#1A0F00]/80 to-black/80 border border-[#C8A27A]/30 rounded-2xl shadow-2xl w-full max-w-4xl backdrop-blur-sm ${isInline ? "" : "max-h-[90vh] overflow-y-auto"}`}>
+      {/* Close Button */}
+      {!isInline && onClose && (
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-white/70 hover:text-white text-2xl font-bold z-10"
         >
           ×
         </button>
+      )}
 
-        <div className="p-8">
+      <div className="p-8">
           {/* Header */}
           <div className="mb-8 text-center">
             <h2 className="text-4xl md:text-5xl font-serif text-[#C8A27A] mb-4">
@@ -603,8 +600,26 @@ const ReservationForm: React.FC<ReservationFormProps> = ({ onClose }) => {
               </button>
             </div>
           </form>
-        </div>
       </div>
+    </div>
+  );
+
+  if (isInline) {
+    return (
+      <div className={`w-full flex justify-center ${playfair.variable} ${montserrat.variable}`}>
+        {formContent}
+      </div>
+    );
+  }
+
+  return (
+    <div className={`fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 ${playfair.variable} ${montserrat.variable}`} style={{
+      backgroundImage: 'url(/reservation.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    }}>
+      {formContent}
     </div>
   );
 };

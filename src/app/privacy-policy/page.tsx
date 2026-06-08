@@ -37,7 +37,7 @@ export default function PrivacyPolicy() {
       <Navbar onBookingOpen={() => setIsBookingOpen(true)} />
 
       {/* Main Content Container */}
-      <div className="relative z-10 min-h-screen py-32 px-6 sm:px-8 lg:px-12" style={{ marginTop: '100px' }}>
+      <div className="relative z-10 min-h-screen pt-56 pb-32 px-6 sm:px-8 lg:px-12">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">

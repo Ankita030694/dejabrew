@@ -1,15 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { useState } from 'react';
-import ReservationForm from './ReservationForm';
 
 const Footer = () => {
-  const [showReservationForm, setShowReservationForm] = useState(false);
+
 
   return (
     <>
-      <footer className="bg-black/50 backdrop-blur-sm text-white">
+      <footer className="bg-black/50 backdrop-blur-sm text-white py-20">
         {/* Main Footer Content */}
         <div className="container mx-auto px-6 md:px-20">
           <div className="grid grid-cols-1 md:grid-cols-9 gap-10">
@@ -58,12 +56,9 @@ const Footer = () => {
                 <li><Link href="/about" className="text-white/70 hover:text-[#C8A27A] transition">About</Link></li>
                 <li><Link href="/menu" className="text-white/70 hover:text-[#C8A27A] transition">Menu</Link></li>
                 <li>
-                  <button 
-                    onClick={() => setShowReservationForm(true)}
-                    className="text-white/70 hover:text-[#C8A27A] transition"
-                  >
+                  <Link href="/reservation" className="text-white/70 hover:text-[#C8A27A] transition">
                     Reservations
-                  </button>
+                  </Link>
                 </li>
                 <li><Link href="/contact" className="text-white/70 hover:text-[#C8A27A] transition">Contact</Link></li>
                 <li><Link href="/privacy-policy" className="text-white/70 hover:text-[#C8A27A] transition">Privacy Policy</Link></li>
@@ -95,10 +90,6 @@ const Footer = () => {
 
       </footer>
 
-      {/* Reservation Form Popup */}
-      {showReservationForm && (
-        <ReservationForm onClose={() => setShowReservationForm(false)} />
-      )}
     </>
   );
 };
